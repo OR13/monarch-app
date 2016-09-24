@@ -29,13 +29,11 @@ export class MonarchAppController {
         this.bodyClass = $state.current.name;
         // this.$log.warn($state.current)
 
-      
+        this.$rootScope.App.UserService.loadSessionUser();
 
         $rootScope.$watch(() => {
             return $state.current.name;
         }, (stateName: string) => {
-
-            
 
             if (stateName) {
                 $log.debug('state: ', stateName)
@@ -43,16 +41,16 @@ export class MonarchAppController {
                 // this.$log.log($state.current)
             }
 
-              var isMetaMaskEnabled = this.$rootScope.App.UserService.isMetaMaskInstalled();
+            var isMetaMaskEnabled = this.$rootScope.App.UserService.isMetaMaskInstalled();
 
-        if (isMetaMaskEnabled) {
-            this.$rootScope.App.UserService.loadSessionUser();
-        } else {
-            $timeout(() => {
-                $state.go('metamask')
-            }, 25)
+            if (isMetaMaskEnabled) {
+               // no-op
+            } else {
+                $timeout(() => {
+                    $state.go('metamask')
+                }, 25)
 
-        }
+            }
 
         })
     }
