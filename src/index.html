@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="monarchApp" ng-strict-di monarch-app>
+
+<head>
+  <meta charset="utf-8">
+  <title>Monarch</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN"
+    crossorigin="anonymous">
+
+  <link href="//d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.0.1.css" rel="stylesheet" />
+
+
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css({.tmp/serve,src}) styles/app.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <script src="https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.0.3.min.js" type="text/javascript"></script>
+  <script src="https://d26b395fwzu5fz.cloudfront.net/keen-analysis-1.1.0.min.js" type="text/javascript"></script>
+  <script src="https://d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.0.1.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+  !function(name,path,ctx){
+    var latest,prev=name!=='Keen'&&window.Keen?window.Keen:false;ctx[name]=ctx[name]||{ready:function(fn){var h=document.getElementsByTagName('head')[0],s=document.createElement('script'),w=window,loaded;s.onload=s.onerror=s.onreadystatechange=function(){if((s.readyState&&!(/^c|loade/.test(s.readyState)))||loaded){return}s.onload=s.onreadystatechange=null;loaded=1;latest=w.Keen;if(prev){w.Keen=prev}else{try{delete w.Keen}catch(e){w.Keen=void 0}}ctx[name]=latest;ctx[name].ready(fn)};s.async=1;s.src=path;h.parentNode.insertBefore(s,h)}}
+  }('KeenAsync','https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.0.3.min.js',this);
+
+  KeenAsync.ready(function(){
+    // Configure a client instance
+    var client = new KeenAsync({
+      projectId: '57e6bb3f8db53dfda8a70c6a',
+      readKey: 'CD887804EA83FC44352DBF6A88DABB0E096C7BDBE3087C684B55CDE7A444856771AD9C60E9A0DC7BE22B6EF9A4C23EAE95D540775DE2C43250AE9F98B5E3B64D43B74A249AFF999F668E5557D257C709725C609A5623E0EA6C3E2055F515A0E7',
+      writeKey: 'AFAF1531EC4B1A99E879B8EB86DD3A53D8724A6FE1FAB0A06E8133EBF66CF957475FB96CB64880EEA8C8E203C4A1273BECF44AE5CDD2189789C6F62509E922D7530AAA74577E6FFA5F26542B49869FF46513DF9B24FD85F57584E8CC50EA36B2'
+    });
+
+    window.keen_client = client;
+
+    // Record an event
+    client.recordEvent('pageviews', {
+      title: document.title
+    });
+  });
+</script>
+
+</head>
+
+<body class="{{etherCareAppCtrl.bodyClass}} " layout-fill>
+
+  <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+  <div ui-view layout-fill></div>
+
+  <!-- build:js(src) scripts/vendor.js -->
+  <!-- bower:js -->
+  <!-- run `gulp inject` to automatically populate bower script dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+  <!-- inject:js -->
+  <!-- js files will be automatically insert here -->
+  <!-- endinject -->
+
+  <!-- inject:partials -->
+  <!-- angular templates will be automatically converted in js and inserted here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <script src="https://npmcdn.com/ipfs-api/dist/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
+
+
+
+
+</body>
+
+</html>

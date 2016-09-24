@@ -1,0 +1,11 @@
+{
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false,
+    "formatOnSave": true
+  },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs"
+  }
+}
