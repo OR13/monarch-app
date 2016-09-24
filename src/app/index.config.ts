@@ -21,7 +21,7 @@ export function config(
         .setPrefix('monarch');
 
     $mdThemingProvider
-        .theme('etherCareTheme')
+        .theme('monarchAppTheme')
 
         .primaryPalette('blue', {
             'default': '700', // by default use shade 400 from the pink palette for primary intentions
@@ -54,6 +54,6 @@ export function config(
 
 
     $mdThemingProvider
-        .setDefaultTheme('etherCareTheme');
+        .setDefaultTheme('monarchAppTheme');
 
 }

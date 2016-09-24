@@ -6,13 +6,14 @@ export function monarchApp(): angular.IDirective {
     return {
         restrict: 'A',
         controller: MonarchAppController,
-        controllerAs: 'etherCareAppCtrl'
+        controllerAs: 'monarchAppCtrl'
     };
 
 }
 
 /** @ngInject */
 export class MonarchAppController {
+
     public bodyClass: string;
 
     constructor(
@@ -20,6 +21,7 @@ export class MonarchAppController {
         public $window: angular.IWindowService,
         private $scope: angular.IScope,
         private $log: angular.ILogService,
+        public $timeout: angular.ITimeoutService,
         public $rootScope: IRootScopeService,
         private $mdSidenav: angular.material.ISidenavService
     ) {
@@ -27,15 +29,30 @@ export class MonarchAppController {
         this.bodyClass = $state.current.name;
         // this.$log.warn($state.current)
 
+      
+
         $rootScope.$watch(() => {
             return $state.current.name;
         }, (stateName: string) => {
+
+            
 
             if (stateName) {
                 $log.debug('state: ', stateName)
                 this.bodyClass = stateName;
                 // this.$log.log($state.current)
             }
+
+              var isMetaMaskEnabled = this.$rootScope.App.UserService.isMetaMaskInstalled();
+
+        if (isMetaMaskEnabled) {
+            this.$rootScope.App.UserService.loadSessionUser();
+        } else {
+            $timeout(() => {
+                $state.go('metamask')
+            }, 25)
+
+        }
 
         })
     }

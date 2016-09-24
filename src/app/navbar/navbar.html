@@ -4,5 +4,9 @@
     <a class="md-button" href="https://github.com/transmute-industries/monarch-app">Source</a>
 
     <a class="md-button" href="http://monarch.transmute.industries">Live</a>
+
+     <a ng-show="navbarCtrl.$rootScope.App.UserService.user" class="md-button" ui-sref="logout">Logout</a>
+
+     <a ng-hide="navbarCtrl.$rootScope.App.UserService.user" class="md-button" ui-sref="login">Login</a>
     
 </md-toolbar>

@@ -10,6 +10,13 @@ import { EthereumService} from '../app/demo/ethereum.service';
 import { IpfsService} from '../app/demo/ipfs.service';
 
 import { MonarchService} from '../app/demo/monarch.service';
+import { UserService} from '../app/user/user.service';
+
+import { LoginController} from '../app/user/login/login.controller';
+import { LogoutController} from '../app/user/logout/logout.controller';
+import { RegisterController} from '../app/user/register/monarch/register.controller';
+import { RegisterMetaMaskController} from '../app/user/register/metamask/register.controller';
+
 
 import { appNavbar } from '../app/navbar/navbar';
 import { monarchApp } from '../app/app.directive'
@@ -56,16 +63,25 @@ angular.module('monarchApp', [
     .config(routerConfig)
 
 
-    .run(runBlock) 
+    .run(runBlock)
 
     .service('EthereumService', EthereumService)
     .service('SecurityService', SecurityService)
     .service('MonarchService', MonarchService)
+    .service('UserService', UserService)
 
 
     .service('IpfsService', IpfsService)
 
     .controller('DemoController', DemoController)
+
+
+    .controller('LoginController', LoginController)
+    .controller('LogoutController', LogoutController)
+    .controller('RegisterController', RegisterController)
+    .controller('RegisterMetaMaskController', RegisterMetaMaskController)
+
+
 
     .controller('ContentViewV0Controller', ContentViewV0Controller)
     .directive('ecContentViewV0', ecContentViewV0)

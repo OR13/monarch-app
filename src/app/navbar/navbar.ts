@@ -8,7 +8,7 @@ export function appNavbar(): angular.IDirective {
     scope: {},
     templateUrl: 'app/navbar/navbar.html',
     controller: NavbarController,
-    controllerAs: 'vm',
+    controllerAs: 'navbarCtrl',
     bindToController: true
   };
 
