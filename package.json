@@ -5,7 +5,7 @@
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gh-deploy": "cp -R dist/dapp docs"
+    "gh-deploy": "cp -R generated/dapp docs"
   },
   "author": "",
   "license": "ISC",
