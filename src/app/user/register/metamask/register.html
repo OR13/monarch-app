@@ -7,4 +7,29 @@
         <h3>Meta Mask is Required</h3>
     </div>
 
+    <md-card class="ec-capture-card" md-theme="monarchAppTheme" md-theme-watch="">
+
+      <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Title</span>
+        </md-card-title-text>
+    </md-card-title>
+
+      <md-card-content>
+          some content here...
+      </md-card-content>
+
+    <md-card-actions layout="row" layout-align="end center">
+        <span flex layout-padding>
+          Hello world
+        </span>
+        <md-button ng-click="vm.submit(0)" class="">
+            No
+        </md-button>
+        <md-button ng-click="vm.submit(1)" class="">
+            Yes
+        </md-button>
+    </md-card-actions>
+</md-card>
+
 </md-content>
