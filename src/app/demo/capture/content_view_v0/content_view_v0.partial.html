@@ -1,0 +1,13 @@
+<md-card class="ec-capture-card" md-theme="{{ vm.instance.activity_spec.render_config.md_theme }}" md-theme-watch="">
+
+    <iframe style="min-height: 480px" class="youtube-player" type="text/html" layout-fill ng-src="{{vm.video_url}}" frameborder="0"
+        allowFullScreen></iframe>
+    <md-card-actions layout="row" layout-align="end center">
+        <span flex layout-padding>
+            How likely are you to recommend this video?
+        </span>
+        <md-button ng-click="vm.submit(rating)" ng-repeat="rating in [1, 2, 3]" class="">
+            {{rating}}
+        </md-button>
+    </md-card-actions>
+</md-card>

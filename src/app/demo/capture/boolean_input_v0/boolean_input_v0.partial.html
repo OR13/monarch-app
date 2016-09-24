@@ -1,0 +1,20 @@
+<md-card class="ec-capture-card" md-theme="{{ vm.instance.activity_spec.render_config.md_theme }}" md-theme-watch="">
+
+      <!--<md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{vm.instance.activity_spec.schema_config.title}}</span>
+        </md-card-title-text>
+    </md-card-title>-->
+
+    <md-card-actions layout="row" layout-align="end center">
+        <span flex layout-padding>
+           {{vm.instance.activity_spec.schema_config.title}}
+        </span>
+        <md-button ng-click="vm.submit(0)" class="">
+            No
+        </md-button>
+        <md-button ng-click="vm.submit(1)" class="">
+            Yes
+        </md-button>
+    </md-card-actions>
+</md-card>
