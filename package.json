@@ -5,6 +5,8 @@
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "embark run",
+    "simulator": "embark start",
     "gh-deploy": "cp -R generated/dapp docs"
   },
   "author": "",
