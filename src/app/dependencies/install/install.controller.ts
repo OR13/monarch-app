@@ -48,6 +48,19 @@ export class InstallDependenciesController {
         var _session = _editor.getSession();
         var _renderer = _editor.renderer;
 
+        var text_val = `
+# Install from https://ipfs.io/
+
+# Configure 
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://localhost:3000\"]" 
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://monarch.transmute.industries\"]" 
+
+# Run 
+ipfs daemon
+        `;
+
+        _editor.setValue(text_val);
+
 
         // Options
 
