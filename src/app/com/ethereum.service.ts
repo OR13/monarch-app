@@ -8,7 +8,7 @@ export class EthereumService {
 
     public w: any;
 
-    public isOnline: boolean;
+
 
     public accounts: Array<string>;
 
@@ -27,11 +27,9 @@ export class EthereumService {
         this.w = window;
         this.web3 = this.w.web3;
 
-        this.isOnline = this.web3 !== undefined;
 
-        if (this.isOnline) {
+        if (this.w.web3) {
             // this.watchForAccounts();
-
             this.accounts = this.w.web3.eth.accounts;
         }
 

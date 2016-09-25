@@ -14,6 +14,9 @@ export interface IMonarchConfig {
     firebaseConfig: any;
     firebase: any;
     UserService: any;
+    isMetaMaskInstalled: boolean;
+    isIPFSInstalled: boolean;
+    isInstallationComplete: boolean;
 }
 
 export interface IRootScopeService extends angular.IRootScopeService {
@@ -28,6 +31,7 @@ export function runBlock(
     $log: angular.ILogService,
     $rootScope: IRootScopeService,
     $state: any,
+    $mdToast: any,
     EthereumService: EthereumService,
     IpfsService: IpfsService,
     MonarchService: MonarchService,
@@ -55,12 +59,33 @@ export function runBlock(
     $rootScope.App.Version = '0.0.0';
     $rootScope.App.UserService = UserService;
 
+    var w: any = window;
+    var isWeb3Enabled: boolean = false;
+
+    $rootScope.$watch(() => {
+        return $rootScope.App.isMetaMaskInstalled && $rootScope.App.isIPFSInstalled;
+    }, (isComplete: boolean) => {
+        $rootScope.App.isInstallationComplete = isComplete;
+    });
 
     $rootScope.$on('$stateChangeStart', function (evt, to, params) {
+
+        if (!$rootScope.App.isInstallationComplete) {
+            $log.debug('meta mask is disabled... ')
+            $timeout(() => {
+                var t = $mdToast.simple();
+                t.content(`You must install some dependencies.`);
+                t.position('top right');
+                $mdToast.show(t);
+                $state.go('install');
+            }, 1 * 1000)
+
+        }
         if (to.redirectTo) {
             evt.preventDefault();
             $state.go(to.redirectTo, params, { location: 'replace' })
         }
+
     });
 
     // $log.debug('MonarchService.CarePlan', $rootScope.App.MonarchService.CarePlan);

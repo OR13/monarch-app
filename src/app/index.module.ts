@@ -15,7 +15,7 @@ import { UserService} from '../app/user/user.service';
 import { LoginController} from '../app/user/login/login.controller';
 import { LogoutController} from '../app/user/logout/logout.controller';
 import { RegisterController} from '../app/user/register/monarch/register.controller';
-import { RegisterMetaMaskController} from '../app/user/register/metamask/register.controller';
+import { InstallDependenciesController} from '../app/dependencies/install/install.controller';
 
 import { HistoryController} from '../app/history/history.controller';
 
@@ -82,7 +82,7 @@ angular.module('monarchApp', [
     .controller('LoginController', LoginController)
     .controller('LogoutController', LogoutController)
     .controller('RegisterController', RegisterController)
-    .controller('RegisterMetaMaskController', RegisterMetaMaskController)
+    .controller('InstallDependenciesController', InstallDependenciesController)
 
     .controller('HistoryController', HistoryController)
 

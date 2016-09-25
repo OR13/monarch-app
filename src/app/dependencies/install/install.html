@@ -1,0 +1,76 @@
+<app-navbar layout="column">
+</app-navbar>
+
+<md-content layout="column" layout-fill>
+
+    <div layout-margin>
+        <h3 ng-hide="installDependenciesCtrl.isInstallationComplete">Install Dependencies</h3>
+        <h3 ng-show="installDependenciesCtrl.isInstallationComplete">Installation Complete</h3>
+    </div>
+
+    <md-card ng-hide="installDependenciesCtrl.$rootScope.App.isMetaMaskInstalled" md-theme="monarchAppTheme" md-theme-watch="">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">MetaMask</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+            <h4>Brings Ethereum to your chrome browser.</h4>
+        </md-card-content>
+
+        <md-card-actions layout="row" layout-align="end center">
+            <span flex layout-padding>
+        </span>
+            <md-button href="https://metamask.io/" class="md-primary md-raised">
+                Install
+            </md-button>
+        </md-card-actions>
+    </md-card>
+
+    <md-card ng-hide="installDependenciesCtrl.$rootScope.App.isIPFSInstalled" md-theme="monarchAppTheme" md-theme-watch="">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">IPFS</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+
+            <h4>A peer-to-peer hypermedia protocol to make the web faster, safer, and more open.</h4>
+
+
+            <div layout-fill id="editor" ui-ace="{
+  useWrapMode : true,
+  showGutter: false,
+  theme:'twilight',
+  mode: 'markdown',
+  firstLineNumber: 5,
+  onLoad: installDependenciesCtrl.aceLoaded,
+  onChange: installDependenciesCtrl.aceChanged
+}">
+
+# Install from https://ipfs.io/
+
+# Configure 
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://localhost:3000\"]" 
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://monarch.transmute.industries\"]" 
+
+# Run 
+ipfs daemon
+
+            </div>
+
+        </md-card-content>
+
+        <md-card-actions layout="row" layout-align="end center">
+            <span flex layout-padding>
+        
+        </span>
+            <md-button href="https://ipfs.io/" class="md-primary md-raised">
+                Install
+            </md-button>
+        </md-card-actions>
+    </md-card>
+
+</md-content>

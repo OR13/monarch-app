@@ -67,7 +67,7 @@ import {SecurityService} from './security.service';
 export class IpfsService {
 
     public ipfs: any;
-    public isOnline: boolean;
+ 
 
     /** @ngInject */
     constructor(
@@ -88,17 +88,18 @@ export class IpfsService {
 
         this.ipfs = w.IpfsApi(host, port);
 
-        this.isOnline = false;
 
         this.ipfs.id()
             .then((id) => {
                 this.$log.debug('my id is: ', id)
 
-                this.isOnline = true;
+    
+                this.$rootScope.App.isIPFSInstalled = true;
             })
             .catch((err) => {
                 console.log('Fail: ', err)
                 // promptIpfsSetup();
+                 this.$rootScope.App.isIPFSInstalled = false;
             })
 
     }

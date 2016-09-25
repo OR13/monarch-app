@@ -40,19 +40,6 @@ export class UserService {
         this.$mdToast.show(t);
     }
 
-    public isMetaMaskInstalled = (): boolean => {
-        var w: any = window;
-        var isEnabled: boolean = false;
-        try {
-            isEnabled = w.web3.eth.defaultAccount !== undefined;
-            // this.$log.debug('meta mask is enabled... ')
-        }
-        catch (e) {
-            this.$log.debug('meta mask is disabled... ')
-        }
-        return isEnabled;
-    }
-
     public loadSessionUser = (): angular.IPromise<IUser> => {
 
         var deferred = this.$q.defer();

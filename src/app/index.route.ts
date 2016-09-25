@@ -30,11 +30,11 @@ export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui
       controllerAs: 'registerCtrl'
     })
 
-    .state('metamask', {
-      url: '/metamask',
-      templateUrl: 'app/user/register/metamask/register.html',
-      controller: 'RegisterMetaMaskController',
-      controllerAs: 'registerMetaMaskCtrl'
+    .state('install', {
+      url: '/install',
+      templateUrl: 'app/dependencies/install/install.html',
+      controller: 'InstallDependenciesController',
+      controllerAs: 'installDependenciesCtrl'
     })
 
     .state('history', {

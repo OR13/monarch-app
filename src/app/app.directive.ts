@@ -41,16 +41,16 @@ export class MonarchAppController {
                 // this.$log.log($state.current)
             }
 
-            var isMetaMaskEnabled = this.$rootScope.App.UserService.isMetaMaskInstalled();
+            // var isMetaMaskEnabled = this.$rootScope.App.UserService.isMetaMaskInstalled();
 
-            if (isMetaMaskEnabled) {
-               // no-op
-            } else {
-                $timeout(() => {
-                    $state.go('metamask')
-                }, 25)
+            // if (isMetaMaskEnabled) {
+            //    // no-op
+            // } else {
+            //     $timeout(() => {
+            //         $state.go('metamask')
+            //     }, 25)
 
-            }
+            // }
 
         })
     }
