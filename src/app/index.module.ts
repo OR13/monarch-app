@@ -18,6 +18,7 @@ import { RegisterController} from '../app/user/register/monarch/register.control
 import { InstallDependenciesController} from '../app/dependencies/install/install.controller';
 
 import { HistoryController} from '../app/history/history.controller';
+import { PulseController} from '../app/pulse/pulse.controller';
 
 
 import { appNavbar } from '../app/navbar/navbar';
@@ -85,6 +86,8 @@ angular.module('monarchApp', [
     .controller('InstallDependenciesController', InstallDependenciesController)
 
     .controller('HistoryController', HistoryController)
+    .controller('PulseController', PulseController)
+
 
     .controller('ContentViewV0Controller', ContentViewV0Controller)
     .directive('ecContentViewV0', ecContentViewV0)

@@ -7,6 +7,9 @@ declare var Keen: any;
 
 export class HistoryController {
 
+    init_complete: boolean;
+    activity_instance_captures: any;
+
     /* @ngInject */
     constructor(
         public $scope: any,
@@ -19,91 +22,35 @@ export class HistoryController {
         public toastr: any,
         public UserService: UserService,
         public keen_project_id: string,
-        public keen_read_key: string) {
+        public keen_read_key: string,
+        private $firebaseObject: any
+    ) {
 
         $log.log('HistoryController...')
 
-        this.renderPageViews();
-        this.countUserInstances();
+
+        this.$scope.$watch(() => {
+            return this.$rootScope.App.UserService.user;
+        }, (user) => {
+            if (user && !this.init_complete) {
+                this.init(user);
+            }
+        })
 
     }
 
 
-    public loadHistory = () => {
-        // this.$log.log('HistoryController.loginWithGithub')
-        // this.UserService.loginWithGithub().then(() => {
-        //     this.$state.go('feed');
-        // });
+    public init = (user) => {
+
+        var ref = this.$rootScope.App.firebase.database().ref('/accounts/' + user.uid + '/activity_instance_captures');
+
+        var syncObject = this.$firebaseObject(ref);
+
+        syncObject.$bindTo(this.$scope, "historyCtrl.activity_instance_captures");
+
+
     }
 
-    public countUserInstances = () => {
 
-        var client = new Keen({
-            projectId: this.keen_project_id,
-            readKey: this.keen_read_key,
-        });
-
-
-        // Configure a Dataviz instance
-        var chart = new Keen.Dataviz()
-            .el('#chart_1')
-            .colors(["#6ab975"])
-            .height(180)
-            .type('metric')
-            .prepare();
-
-        // Run a query
-        client
-            .query('count', {
-                event_collection: "user_instances",
-                timeframe: "this_14_days",
-                timezone: "UTC"
-            })
-            .then(function (res) {
-                // Handle the result
-                chart
-                    .data(res)
-                    .render();
-            })
-            .catch(function (err) {
-                // Handle errors
-                chart.message(err.message);
-            });
-    }
-
-    public renderPageViews = () => {
-
-        var client = new Keen({
-            projectId: this.keen_project_id,
-            readKey: this.keen_read_key,
-        });
-
-
-        // Configure a Dataviz instance
-        var chart = new Keen.Dataviz()
-            .el('#chart_2')
-            .colors(["#6ab975"])
-            .height(180)
-            .type('area')
-            .prepare();
-
-        // Run a query
-        client
-            .query('count', {
-                event_collection: 'pageviews',
-                interval: 'daily',
-                timeframe: 'this_14_days'
-            })
-            .then(function (res) {
-                // Handle the result
-                chart
-                    .data(res)
-                    .render();
-            })
-            .catch(function (err) {
-                // Handle errors
-                chart.message(err.message);
-            });
-    }
 
 }

@@ -44,6 +44,13 @@ export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui
       controllerAs: 'historyCtrl'
     })
 
+    .state('pulse', {
+      url: '/pulse',
+      templateUrl: 'app/pulse/pulse.html',
+      controller: 'PulseController',
+      controllerAs: 'pulseCtrl'
+    })
+
 
   $urlRouterProvider.otherwise('/feed');
 }

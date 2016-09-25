@@ -98,9 +98,8 @@ export class FeedController {
                         })
 
                         this.$log.debug('qr ', qr)
-
-
                     }
+
 
                     this.init_complete = true;
                 }

@@ -1,42 +1,30 @@
 <app-navbar layout="column">
 </app-navbar>
 
+
 <md-content layout="column" layout-fill>
 
     <div layout-margin>
         <h3>History</h3>
     </div>
 
-    <md-card class="ec-capture-card" md-theme="monarchAppTheme" md-theme-watch="">
+    <div ng-repeat="capture in historyCtrl.activity_instance_captures">
 
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Title</span>
-            </md-card-title-text>
-        </md-card-title>
+        <md-card md-theme="monarchAppTheme" md-theme-watch="">
 
-        <md-card-content>
-            some content here...
-        </md-card-content>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{capture.activity_spec.schema_config.title}}</span>
+                </md-card-title-text>
+            </md-card-title>
 
-        <md-card-actions layout="row" layout-align="end center">
-            <span flex layout-padding>
-          Hello world
-        </span>
-            <md-button ng-click="vm.submit(0)" class="">
-                No
-            </md-button>
-            <md-button ng-click="vm.submit(1)" class="">
-                Yes
-            </md-button>
-        </md-card-actions>
-    </md-card>
+            <md-card-content>
+                {{capture.capture.value}}
+            </md-card-content>
 
-        <md-card id="chart_1" md-theme="" md-theme-watch="">
-    </md-card>
+        </md-card>
 
-    <md-card id="chart_2" md-theme="" md-theme-watch="">
-    </md-card>
+    </div>
 
 
 </md-content>

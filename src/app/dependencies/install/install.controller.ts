@@ -34,6 +34,7 @@ export class InstallDependenciesController {
             return this.$rootScope.App.isInstallationComplete;
         }, (isComplete: boolean) => {
             this.isInstallationComplete = isComplete;
+            this.$state.go('feed');
         });
 
     }
