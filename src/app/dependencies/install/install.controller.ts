@@ -23,7 +23,8 @@ export class InstallDependenciesController {
 
         $log.log('InstallDependenciesController...')
 
-        this.watchDependencies();
+        // REDIRECT LOOP
+        // this.watchDependencies();
 
     }
 
@@ -38,7 +39,6 @@ export class InstallDependenciesController {
         });
 
     }
-
 
     public aceLoaded = (_editor) => {
 
