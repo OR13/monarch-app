@@ -345,7 +345,7 @@ export class MonarchService {
 
         //remove the instance
         account_ref.child('activity_instances/' + instance.instance_uid).remove();
-        delete this.$rootScope.App.UserService.account.activity_instances[instance.instance_uid]
+        // delete this.$rootScope.App.UserService.account.activity_instances[instance.instance_uid]
 
     }
 
