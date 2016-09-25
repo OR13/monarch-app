@@ -1,11 +1,12 @@
 /** @ngInject */
 export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
   $stateProvider
-    .state('demo', {
-      url: '/demo',
-      templateUrl: 'app/demo/demo.html',
-      controller: 'DemoController',
-      controllerAs: 'demoCtrl'
+
+    .state('feed', {
+      url: '/feed',
+      templateUrl: 'app/feed/feed.html',
+      controller: 'FeedController',
+      controllerAs: 'feedCtrl'
     })
 
     .state('login', {
@@ -22,18 +23,27 @@ export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui
       controllerAs: 'logoutController'
     })
 
-      .state('register', {
+    .state('register', {
       url: '/register',
       templateUrl: 'app/user/register/monarch/register.html',
       controller: 'RegisterController',
       controllerAs: 'registerCtrl'
     })
 
-     .state('metamask', {
+    .state('metamask', {
       url: '/metamask',
       templateUrl: 'app/user/register/metamask/register.html',
       controller: 'RegisterMetaMaskController',
       controllerAs: 'registerMetaMaskCtrl'
     })
-  $urlRouterProvider.otherwise('/demo');
+
+    .state('history', {
+      url: '/history',
+      templateUrl: 'app/history/history.html',
+      controller: 'HistoryController',
+      controllerAs: 'historyCtrl'
+    })
+
+
+  $urlRouterProvider.otherwise('/feed');
 }

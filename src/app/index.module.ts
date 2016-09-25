@@ -3,13 +3,13 @@
 import { config } from '../app/index.config';
 import { routerConfig } from '../app/index.route';
 import { runBlock } from '../app/index.run';
-import { DemoController } from '../app/demo/demo.controller';
+import { FeedController } from '../app/feed/feed.controller';
 
-import { SecurityService} from '../app/demo/security.service';
-import { EthereumService} from '../app/demo/ethereum.service';
-import { IpfsService} from '../app/demo/ipfs.service';
+import { SecurityService} from '../app/com/security.service';
+import { EthereumService} from '../app/com/ethereum.service';
+import { IpfsService} from '../app/com/ipfs.service';
 
-import { MonarchService} from '../app/demo/monarch.service';
+import { MonarchService} from '../app/com/monarch.service';
 import { UserService} from '../app/user/user.service';
 
 import { LoginController} from '../app/user/login/login.controller';
@@ -17,22 +17,24 @@ import { LogoutController} from '../app/user/logout/logout.controller';
 import { RegisterController} from '../app/user/register/monarch/register.controller';
 import { RegisterMetaMaskController} from '../app/user/register/metamask/register.controller';
 
+import { HistoryController} from '../app/history/history.controller';
+
 
 import { appNavbar } from '../app/navbar/navbar';
 import { monarchApp } from '../app/app.directive'
 
 
 
-import { ContentViewV0Controller } from '../app/demo/capture/content_view_v0/content_view_v0.controller'
-import { ecContentViewV0 } from '../app/demo/capture/content_view_v0/content_view_v0.directive'
+import { ContentViewV0Controller } from '../app/feed/capture/content_view_v0/content_view_v0.controller'
+import { ecContentViewV0 } from '../app/feed/capture/content_view_v0/content_view_v0.directive'
 
 
-import { TextInputV0Controller } from '../app/demo/capture/text_input_v0/text_input_v0.controller'
-import { ecTextInputV0 } from '../app/demo/capture/text_input_v0/text_input_v0.directive'
+import { TextInputV0Controller } from '../app/feed/capture/text_input_v0/text_input_v0.controller'
+import { ecTextInputV0 } from '../app/feed/capture/text_input_v0/text_input_v0.directive'
 
 
-import { BooleanInputV0Controller } from '../app/demo/capture/boolean_input_v0/boolean_input_v0.controller'
-import { ecBooleanInputV0 } from '../app/demo/capture/boolean_input_v0/boolean_input_v0.directive'
+import { BooleanInputV0Controller } from '../app/feed/capture/boolean_input_v0/boolean_input_v0.controller'
+import { ecBooleanInputV0 } from '../app/feed/capture/boolean_input_v0/boolean_input_v0.directive'
 
 declare var moment: moment.MomentStatic;
 declare var jQuery: any;
@@ -73,7 +75,7 @@ angular.module('monarchApp', [
 
     .service('IpfsService', IpfsService)
 
-    .controller('DemoController', DemoController)
+    .controller('FeedController', FeedController)
 
 
     .controller('LoginController', LoginController)
@@ -81,7 +83,7 @@ angular.module('monarchApp', [
     .controller('RegisterController', RegisterController)
     .controller('RegisterMetaMaskController', RegisterMetaMaskController)
 
-
+    .controller('HistoryController', HistoryController)
 
     .controller('ContentViewV0Controller', ContentViewV0Controller)
     .directive('ecContentViewV0', ecContentViewV0)

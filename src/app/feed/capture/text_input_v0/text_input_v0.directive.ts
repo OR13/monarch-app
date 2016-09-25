@@ -6,10 +6,10 @@ export function ecTextInputV0(): angular.IDirective {
   return {
     restrict: 'E',
     scope: {
-        patient: '=',
+        user: '=',
         instance: '='
     },
-    templateUrl: 'app/demo/capture/text_input_v0/text_input_v0.partial.html',
+    templateUrl: 'app/feed/capture/text_input_v0/text_input_v0.partial.html',
     controller: TextInputV0Controller,
     controllerAs: 'vm',
     bindToController: true

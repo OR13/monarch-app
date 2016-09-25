@@ -25,7 +25,7 @@ export class LoginController {
     public loginWithGithub = () => {
         this.$log.log('LoginController.loginWithGithub')
         this.UserService.loginWithGithub().then(() => {
-            this.$state.go('demo');
+            this.$state.go('feed');
         });
     }
 

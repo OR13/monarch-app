@@ -47,7 +47,7 @@ export interface IActivitySuite {
     activity_specs: Array<IActivitySpec>;
 }
 
-export interface IPatient {
+export interface IUser {
     name: string;
     image: string;
     activity_suite: IActivitySuite;
@@ -63,7 +63,7 @@ export class MonarchService {
 
     public ActivitySuite: IActivitySuite;
 
-    public patients: Array<IPatient>;
+    public users: Array<IUser>;
     public keen_async_client: any;
 
 
@@ -140,7 +140,7 @@ export class MonarchService {
             ]
         };
 
-        this.patients = [
+        this.users = [
             {
                 name: 'Janet Perkins',
                 image: '/assets/img/avatar.jpeg',
@@ -159,7 +159,6 @@ export class MonarchService {
             if (Keen) {
                 return Keen;
             }
-
         }, (Keen) => {
             if (Keen) {
                 this.initKeen();
@@ -167,13 +166,13 @@ export class MonarchService {
         })
     }
 
+
+
     public initKeen = () => {
         KeenAsync.ready(() => {
-
             var w: any = window;
             this.keen_async_client = w.keen_client;
         });
-
     }
 
     public isSpecInInstances = (spec: IActivitySpec, instances: Array<IActivityInstance>) => {
@@ -193,11 +192,11 @@ export class MonarchService {
         return flag;
     }
 
-    public getNextInstance = (patient: IPatient): IActivityInstance => {
+    public getNextInstance = (user: IUser): IActivityInstance => {
 
         var highest_priority_activity: IActivityInstance = null;
 
-        patient.activity_instances.forEach((inst: IActivityInstance) => {
+        user.activity_instances.forEach((inst: IActivityInstance) => {
 
             if (!highest_priority_activity) {
                 highest_priority_activity = inst;
@@ -232,18 +231,18 @@ export class MonarchService {
     }
 
     public schedule = () => {
-        this.patients.forEach((patient: IPatient) => {
-            // this.$log.debug('schedule activities for ', patient.name);
+        this.users.forEach((user: IUser) => {
+            // this.$log.debug('schedule activities for ', user.name);
 
             // this.$log.debug('cron this activity spec ', activity_spec);
 
             // var s = later.parse.cron(activity_spec.cron_expression);
 
-            patient.activity_suite.activity_specs.forEach((activity_spec: IActivitySpec) => {
+            user.activity_suite.activity_specs.forEach((activity_spec: IActivitySpec) => {
 
                 // this.$log.debug(' is this activity_spec in activity_instances ')
 
-                var isSpecInInstances = this.isSpecInInstances(activity_spec, patient.activity_instances);
+                var isSpecInInstances = this.isSpecInInstances(activity_spec, user.activity_instances);
 
                 // this.$log.debug('isSpecInInstances: ', isSpecInInstances);
 
@@ -259,7 +258,7 @@ export class MonarchService {
                         status: ActivityInstanceStatus.Incomplete
                     });
 
-                    patient.activity_instances.push(new_instance);
+                    user.activity_instances.push(new_instance);
 
                     this.$log.debug('activity_instance added...', new_instance);
                     // this.$rootScope.$apply();
@@ -269,106 +268,27 @@ export class MonarchService {
 
         })
 
-        // this.$log.debug('activity_instances', this.patients[0].activity_instances.length);
+        // this.$log.debug('activity_instances', this.users[0].activity_instances.length);
     }
 
-    public captureAll = (patient: IPatient, instance: IActivityInstance) => {
+    public captureAll = (user: IUser, instance: IActivityInstance) => {
 
-        this.$log.debug('patient snapshot: ', patient);
+        this.$log.debug('user snapshot: ', user);
         this.$log.debug('instance snapshot: ', instance);
 
-        this.capturePatientSnapshot(patient);
-        this.captureInstanceSnapshot(instance);
-    }
-
-    public capturePatientSnapshot = (patient: IPatient) => {
-        this.$log.debug('begin capturePatientSnapshot');
-        this.$rootScope.App.MonarchService.keen_async_client.recordEvent('patient_snapshot', {
-            patient: angular.copy(patient)
-        });
-    }
-
-    public captureInstanceSnapshot = (instance: IActivityInstance) => {
-        this.$log.debug('begin capturePatientSnapshot');
-        this.$rootScope.App.MonarchService.keen_async_client.recordEvent('instant_snapshot', {
+        var user_instance = {
+            user: angular.copy(user),
             instance: angular.copy(instance)
-        });
-    }
+        }
 
-    public renderLast100PatientSnapshots = () => {
+        this.$rootScope.App.MonarchService.keen_async_client.recordEvent('user_instances', user_instance);
+        this.$rootScope.App.firebase.database().ref().child('user_instances').push(user_instance);
 
-        var client = new Keen({
-            projectId: this.keen_project_id,
-            readKey: this.keen_read_key,
-        });
-
-
-        // Configure a Dataviz instance
-        var chart = new Keen.Dataviz()
-            .el('#chart_1')
-            .colors(["#6ab975"])
-            .height(180)
-            .type('metric')
-            .prepare();
-
-        // Run a query
-        client
-            .query('count', {
-                event_collection: "instant_snapshot",
-                targetProperty: "instance.capture.value",
-                timeframe: "this_14_days",
-                timezone: "UTC"
-            })
-            .then(function (res) {
-                // Handle the result
-                chart
-                    .data(res)
-                    .render();
-            })
-            .catch(function (err) {
-                // Handle errors
-                chart.message(err.message);
-            });
-    }
-
-    public renderPageViews = () => {
-
-        var client = new Keen({
-            projectId: this.keen_project_id,
-            readKey: this.keen_read_key,
-        });
-
-
-        // Configure a Dataviz instance
-        var chart = new Keen.Dataviz()
-            .el('#chart_2')
-            .colors(["#6ab975"])
-            .height(180)
-            .type('area')
-            .prepare();
-
-        // Run a query
-        client
-            .query('count', {
-                event_collection: 'pageviews',
-                interval: 'daily',
-                timeframe: 'this_14_days'
-            })
-            .then(function (res) {
-                // Handle the result
-                chart
-                    .data(res)
-                    .render();
-            })
-            .catch(function (err) {
-                // Handle errors
-                chart.message(err.message);
-            });
     }
 
     public scheduleActivities = () => {
 
-        // this.$log.debug('schedule activities for ', patient.name);
+        // this.$log.debug('schedule activities for ', user.name);
 
         this.schedule();
 

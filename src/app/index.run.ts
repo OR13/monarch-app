@@ -1,7 +1,7 @@
 
-import {EthereumService} from './demo/ethereum.service'
-import {IpfsService} from './demo/ipfs.service'
-import {MonarchService} from './demo/monarch.service'
+import {EthereumService} from './com/ethereum.service'
+import {IpfsService} from './com/ipfs.service'
+import {MonarchService} from './com/monarch.service'
 
 import {UserService} from './user/user.service'
 
@@ -45,10 +45,11 @@ export function runBlock(
     $rootScope.App.MonarchService = MonarchService;
 
     $rootScope.App.firebaseConfig = {
-        apiKey: "AIzaSyBmqo71zTPpZ9aF-RNCtv4XuQl86rL9Qw0",
-        authDomain: "project-6582009982322667069.firebaseapp.com",
-        databaseURL: "https://project-6582009982322667069.firebaseio.com",
-        storageBucket: "project-6582009982322667069.appspot.com",
+        apiKey: "AIzaSyDIXrTv0TD9zdaCy5n_QXm6_VMaS-1B3sQ",
+        authDomain: "transmute-industries.firebaseapp.com",
+        databaseURL: "https://transmute-industries.firebaseio.com",
+        storageBucket: "transmute-industries.appspot.com",
+        messagingSenderId: "1068223304219"
     };
     $rootScope.App.firebase = w.firebase.initializeApp($rootScope.App.firebaseConfig);
     $rootScope.App.Version = '0.0.0';

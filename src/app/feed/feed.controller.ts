@@ -1,14 +1,15 @@
 
 import {IRootScopeService } from '../index.run';
 
-import {IPatient, IActivitySpec, ActivityInstanceStatus, ComponentTypes, IActivityInstance} from './monarch.service';
+import {IUser, IActivitySpec, ActivityInstanceStatus, ComponentTypes, IActivityInstance} from '../com/monarch.service';
 
 
 declare var KeenAsync: any;
 declare var ace: any;
-export class DemoController {
 
-    public patient: IPatient;
+export class FeedController {
+
+    public user: IUser;
 
     public ct: any;
 
@@ -30,22 +31,12 @@ export class DemoController {
         public $mdDialog: any,
         public toastr: any
     ) {
-        this.patient = this.$rootScope.App.MonarchService.patients[0];
+        this.user = this.$rootScope.App.MonarchService.users[0];
         this.$rootScope.App.MonarchService.scheduleActivities();
 
-
-
-        KeenAsync.ready(() => {
-            this.$rootScope.App.MonarchService.renderLast100PatientSnapshots();
-            this.$rootScope.App.MonarchService.renderPageViews();
-
-
-            this.$rootScope.App.MonarchService.loadIpfsImage();
-
-        });
+        this.$rootScope.App.MonarchService.loadIpfsImage();
 
         this.ct = ComponentTypes;
-
 
     }
 

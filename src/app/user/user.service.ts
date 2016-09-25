@@ -88,7 +88,7 @@ export class UserService {
 
         this.$log.debug('provider: ', provider)
 
-        this.$rootScope.App.firebase.auth().signInWithPopup(provider)
+        this.$rootScope.App.firebase.auth().signInAnonymously()
             .catch((error) => {
                 this.$log.error('loginWithGithub failed: ', error);
             });
