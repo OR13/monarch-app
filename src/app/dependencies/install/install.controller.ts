@@ -31,7 +31,7 @@ export class InstallDependenciesController {
     public watchDependencies = () => {
 
         this.$scope.$watch(() => {
-            return this.$rootScope.App.isMetaMaskInstalled && this.$rootScope.App.isIPFSInstalled;
+            return this.$rootScope.App.isInstallationComplete;
         }, (isComplete: boolean) => {
             this.isInstallationComplete = isComplete;
         });
@@ -46,7 +46,6 @@ export class InstallDependenciesController {
         // Editor part
         var _session = _editor.getSession();
         var _renderer = _editor.renderer;
-
 
 
         // Options

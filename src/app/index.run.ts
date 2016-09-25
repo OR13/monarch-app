@@ -60,15 +60,16 @@ export function runBlock(
     $rootScope.App.UserService = UserService;
 
     var w: any = window;
-    var isWeb3Enabled: boolean = false;
-
+ 
     $rootScope.$watch(() => {
         return $rootScope.App.isMetaMaskInstalled && $rootScope.App.isIPFSInstalled;
     }, (isComplete: boolean) => {
         $rootScope.App.isInstallationComplete = isComplete;
     });
 
-    $rootScope.$on('$stateChangeStart', function (evt, to, params) {
+    $rootScope.$on('$stateChangeStart',  (evt, to, params)=> {
+
+        $rootScope.App.isMetaMaskInstalled = w.web3 !== undefined;
 
         if (!$rootScope.App.isInstallationComplete) {
             $log.debug('meta mask is disabled... ')
@@ -81,6 +82,7 @@ export function runBlock(
             }, 1 * 1000)
 
         }
+
         if (to.redirectTo) {
             evt.preventDefault();
             $state.go(to.redirectTo, params, { location: 'replace' })

@@ -26,11 +26,13 @@ export class EthereumService {
 
         this.w = window;
         this.web3 = this.w.web3;
+        
 
 
         if (this.w.web3) {
             // this.watchForAccounts();
             this.accounts = this.w.web3.eth.accounts;
+            // this.$rootScope.App.isMetaMaskInstalled = true;
         }
 
     }
