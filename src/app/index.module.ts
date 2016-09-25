@@ -52,7 +52,8 @@ angular.module('monarchApp', [
     'ui.router',
     'toastr',
     'LocalStorageModule',
-    'ui.ace'
+    'ui.ace',
+    'firebase'
 ])
 
     .constant('moment', moment)

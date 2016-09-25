@@ -35,9 +35,6 @@ export class EthereumService {
             this.accounts = this.w.web3.eth.accounts;
         }
 
-
-
-
     }
 
     // public watchForAccounts = () => {

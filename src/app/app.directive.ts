@@ -36,7 +36,7 @@ export class MonarchAppController {
         }, (stateName: string) => {
 
             if (stateName) {
-                $log.debug('state: ', stateName)
+                // $log.debug('state: ', stateName)
                 this.bodyClass = stateName;
                 // this.$log.log($state.current)
             }

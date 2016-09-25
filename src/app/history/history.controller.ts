@@ -24,6 +24,7 @@ export class HistoryController {
         $log.log('HistoryController...')
 
         this.renderPageViews();
+        this.countUserInstances();
 
     }
 
@@ -35,41 +36,40 @@ export class HistoryController {
         // });
     }
 
-    //   public renderLast100PatientSnapshots = () => {
+    public countUserInstances = () => {
 
-    //     var client = new Keen({
-    //         projectId: this.keen_project_id,
-    //         readKey: this.keen_read_key,
-    //     });
+        var client = new Keen({
+            projectId: this.keen_project_id,
+            readKey: this.keen_read_key,
+        });
 
 
-    //     // Configure a Dataviz instance
-    //     var chart = new Keen.Dataviz()
-    //         .el('#chart_1')
-    //         .colors(["#6ab975"])
-    //         .height(180)
-    //         .type('metric')
-    //         .prepare();
+        // Configure a Dataviz instance
+        var chart = new Keen.Dataviz()
+            .el('#chart_1')
+            .colors(["#6ab975"])
+            .height(180)
+            .type('metric')
+            .prepare();
 
-    //     // Run a query
-    //     client
-    //         .query('count', {
-    //             event_collection: "instance_snapshot",
-    //             targetProperty: "instance.capture.value",
-    //             timeframe: "this_14_days",
-    //             timezone: "UTC"
-    //         })
-    //         .then(function (res) {
-    //             // Handle the result
-    //             chart
-    //                 .data(res)
-    //                 .render();
-    //         })
-    //         .catch(function (err) {
-    //             // Handle errors
-    //             chart.message(err.message);
-    //         });
-    // }
+        // Run a query
+        client
+            .query('count', {
+                event_collection: "user_instances",
+                timeframe: "this_14_days",
+                timezone: "UTC"
+            })
+            .then(function (res) {
+                // Handle the result
+                chart
+                    .data(res)
+                    .render();
+            })
+            .catch(function (err) {
+                // Handle errors
+                chart.message(err.message);
+            });
+    }
 
     public renderPageViews = () => {
 

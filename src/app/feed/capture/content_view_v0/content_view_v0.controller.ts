@@ -6,7 +6,6 @@ import {IUser, IActivitySpec, ActivityInstanceStatus, ComponentTypes, IActivityI
 export class ContentViewV0Controller {
 
     public instance: IActivityInstance;
-    public user: IUser;
     public video_url: string;
 
 
@@ -23,16 +22,10 @@ export class ContentViewV0Controller {
     }
 
     public submit = (rating: number) => {
-        this.$log.debug('user snapshot: ', this.user)
 
         this.instance.capture.value = rating;
 
-        var indexOfInst = this.user.activity_instances.indexOf(this.instance);
-
-        //remove this instance
-        this.user.activity_instances.splice(indexOfInst, 1);
-
-        this.$rootScope.App.MonarchService.captureAll(this.user, this.instance);
+        this.$rootScope.App.MonarchService.captureInstance(this.instance);
     }
 
 }

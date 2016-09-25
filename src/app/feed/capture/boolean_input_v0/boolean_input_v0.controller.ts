@@ -6,7 +6,6 @@ import {IUser, IActivitySpec, ActivityInstanceStatus, ComponentTypes, IActivityI
 export class BooleanInputV0Controller {
 
     public instance: IActivityInstance;
-    public user: IUser;
 
 
     constructor(
@@ -21,16 +20,12 @@ export class BooleanInputV0Controller {
     }
 
     public submit = (bit: number) => {
-        this.$log.debug('user snapshot: ', this.user)
 
+        this.$log.debug('what instance!!!!', this.instance)
+  
         this.instance.capture.value = bit;
 
-        var indexOfInst = this.user.activity_instances.indexOf(this.instance);
-
-        //remove this instance
-        this.user.activity_instances.splice(indexOfInst, 1);
-
-        this.$rootScope.App.MonarchService.captureAll(this.user, this.instance);
+        this.$rootScope.App.MonarchService.captureInstance(this.instance);
 
         
     }

@@ -6,7 +6,6 @@ export function ecTextInputV0(): angular.IDirective {
   return {
     restrict: 'E',
     scope: {
-        user: '=',
         instance: '='
     },
     templateUrl: 'app/feed/capture/text_input_v0/text_input_v0.partial.html',

@@ -3,9 +3,7 @@ import {IRootScopeService } from '../index.run';
 
 import {IUser, IActivitySpec, ActivityInstanceStatus, ComponentTypes, IActivityInstance} from '../com/monarch.service';
 
-
 declare var KeenAsync: any;
-declare var ace: any;
 
 export class FeedController {
 
@@ -13,10 +11,9 @@ export class FeedController {
 
     public ct: any;
 
-    public ipfs_image: string;
-
-    public ethereum_editor: any;
-
+    public account: any;
+    public init_complete: boolean;
+    public activity_instances: any;
 
     /* @ngInject */
     constructor(
@@ -29,56 +26,89 @@ export class FeedController {
         public $interval: angular.IIntervalService,
         public $sce: angular.ISCEService,
         public $mdDialog: any,
-        public toastr: any
+        public toastr: any,
+        public $firebaseObject: any
     ) {
-        this.user = this.$rootScope.App.MonarchService.users[0];
-        this.$rootScope.App.MonarchService.scheduleActivities();
-
-        this.$rootScope.App.MonarchService.loadIpfsImage();
 
         this.ct = ComponentTypes;
+        this.activity_instances = null;
+        this.init_complete = false;
+
+
+        this.$scope.$watch(() => {
+            return this.$rootScope.App.UserService.user;
+        }, (user) => {
+            if (user && !this.init_complete) {
+                this.init(user);
+            }
+        })
 
     }
 
-    public aceLoaded = (_editor) => {
 
-        this.ethereum_editor = _editor
 
-        this.$rootScope.$watch(() => {
-            return this.$rootScope.App.EthereumService.accounts;
-        }, (accounts) => {
-            var ed_val = JSON.stringify(this.$rootScope.App.EthereumService.accounts);
-            this.$log.debug(' heard ed_val ', ed_val)
+    public init = (user) => {
+        this.$rootScope.App.firebase.database().ref('/accounts/' + user.uid)
+            .once('value').then((snapshot) => {
 
-            if (ed_val) {
-                this.ethereum_editor.setValue(ed_val);
-                this.ethereum_editor.setReadOnly(true);
-            }
+                var account = snapshot.val();
 
-        })
-
-        // Editor part
-        var _session = _editor.getSession();
-        var _renderer = _editor.renderer;
+                this.account = account;
 
 
 
-        // Options
+                if (!account) {
+                    this.$rootScope.App.firebase.database().ref('accounts/' + user.uid).set({
+                        uid: user.uid,
+                        ethereum_accounts: this.$rootScope.App.EthereumService.accounts,
+                        name: 'Janet Perkins',
+                        image: '/assets/img/avatar.jpeg',
+                        activity_suite: this.$rootScope.App.MonarchService.ActivitySuite,
+                        activity_instances: []
+                    });
+                    this.$timeout(() => {
+                        this.init(user);
+                    }, 1 * 1000);
+                } else {
+                    this.$log.debug('syncActivityInstances once...');
+                    if (!account.activity_instances) {
+                        this.$rootScope.App.MonarchService.schedule(account)
+                        this.$timeout(() => {
+                            this.init(user);
+                        }, 1 * 1000);
 
-        _session.setUndoManager(new ace.UndoManager());
-        _renderer.setShowGutter(false);
+                    } else {
+                        var ref = this.$rootScope.App.firebase.database().ref('/accounts/' + user.uid + '/activity_instances');
 
-        // Events
-        // _editor.on("changeSession", function () { });
-        // _session.on("change", function () { });
-    };
+                        var syncObject = this.$firebaseObject(ref);
 
-    public aceChanged = (e) => {
-        //
-    };
+                        syncObject.$bindTo(this.$scope, "feedCtrl.activity_instances");
+
+                        // this.$scope.$watch(() => {
+                        //     var b: any = this.$scope;
+                        //     return b.testBinding;
+                        // }, (data) => {
+                        //     this.$log.debug('WHAT data', data)
+                        // })
+
+                        var w: any = window;
+                        const qr = new w.QRious({
+                            element: document.getElementById('ethereum_account_qr_code'),
+                            value: this.account.ethereum_accounts[0]
+                        })
+
+                        this.$log.debug('qr ', qr)
 
 
+                    }
 
+                    this.init_complete = true;
+                }
+
+                // this.$log.debug(' loaded account: ', account)
+
+            });
+    }
 
 }
 

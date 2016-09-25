@@ -1,12 +1,9 @@
 
 import {IRootScopeService} from '../index.run';
 
-export interface IUser {
-    uid: string;
-    displayName: string;
-    isAnonymous: boolean;
-    refreshToken: string;
-}
+
+import {IUser} from '../com/monarch.service';
+
 
 export interface ILoginCredentials {
     email: string;
@@ -14,10 +11,12 @@ export interface ILoginCredentials {
 }
 
 
+
 export class UserService {
 
     public login: ILoginCredentials;
     public user: IUser;
+    public account: IUser;
 
     public onLoginToast: ng.material.ISimpleToastPreset;
 
@@ -36,8 +35,8 @@ export class UserService {
 
     public toastLogin = () => {
         var t = this.$mdToast.simple();
-        t.content(`logged in as ${this.user.uid}`);
-        t.position('bottom left');
+        t.content(`Hello ${this.user.uid}`);
+        t.position('top right');
         this.$mdToast.show(t);
     }
 
@@ -46,7 +45,7 @@ export class UserService {
         var isEnabled: boolean = false;
         try {
             isEnabled = w.web3.eth.defaultAccount !== undefined;
-            this.$log.debug('meta mask is enabled... ')
+            // this.$log.debug('meta mask is enabled... ')
         }
         catch (e) {
             this.$log.debug('meta mask is disabled... ')
@@ -61,13 +60,17 @@ export class UserService {
         this.$rootScope.App.firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 // User is signed in.
-                this.$log.debug('onAuthStateChanged: ', user);
+                // this.$log.debug('onAuthStateChanged: ', user);
                 this.user = user;
 
+               
+
                 this.toastLogin();
+
                 deferred.resolve(this.user);
+
             } else {
-                this.$log.debug('onAuthStateChanged: ', 'user is logged out.');
+                // this.$log.debug('onAuthStateChanged: ', 'user is logged out.');
                 this.user = null;
 
                 deferred.reject("User is logged out");
@@ -86,7 +89,7 @@ export class UserService {
         var w: any = window;
         var provider = new w.firebase.auth.GithubAuthProvider();
 
-        this.$log.debug('provider: ', provider)
+        // this.$log.debug('provider: ', provider)
 
         this.$rootScope.App.firebase.auth().signInAnonymously()
             .catch((error) => {
@@ -96,8 +99,6 @@ export class UserService {
         return deferred.promise;
 
     }
-
-
 
     public logout = (): angular.IPromise<any[]> => {
 
