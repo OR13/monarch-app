@@ -23,7 +23,7 @@ export function config(
     $mdThemingProvider
         .theme('monarchAppTheme')
 
-        .primaryPalette('blue', {
+        .primaryPalette('amber', {
             'default': '700', // by default use shade 400 from the pink palette for primary intentions
             'hue-1': '800', // use shade 100 for the <code>md-hue-1</code> class
             'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
@@ -31,11 +31,11 @@ export function config(
         })
         // If you specify less than all of the keys, it will inherit from the
         // default shades
-        .accentPalette('green', {
+        .accentPalette('blue', {
             'default': '400' // use shade 200 for default, and keep all other shades the same
         })
 
-        .warnPalette('orange')
+        .warnPalette('pink')
 
         .backgroundPalette('grey', {
             'default': '200',
@@ -44,13 +44,13 @@ export function config(
             'hue-3': '800',
         })
 
-    $mdThemingProvider
-        .theme('dark-grey')
-        .primaryPalette('blue')
-        .accentPalette('light-blue')
-        .warnPalette('orange')
-        .backgroundPalette('grey')
-        .dark();
+    // $mdThemingProvider
+    //     .theme('alt')
+    //     .primaryPalette('blue')
+    //     .accentPalette('light-blue')
+    //     .warnPalette('orange')
+    //     .backgroundPalette('grey')
+    //     .dark();
 
 
     $mdThemingProvider

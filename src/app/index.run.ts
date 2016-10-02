@@ -13,7 +13,7 @@ export interface IMonarchConfig {
     MonarchService: MonarchService;
     firebaseConfig: any;
     firebase: any;
-    UserService: any;
+    UserService: UserService;
     isMetaMaskInstalled: boolean;
     isIPFSInstalled: boolean;
     isInstallationComplete: boolean;

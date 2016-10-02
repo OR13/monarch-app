@@ -1,4 +1,9 @@
 <md-toolbar class="app-navbar" layout="row" layout-align="center center" layout-padding>
+
+    <div layout="row">
+        <canvas id="SmallFBUserToken" ng-click="navbarCtrl.showId($event)"></canvas>
+    </div>
+
     <a class="brand-link" ui-sref="feed" flex>Monarch</a>
 
     <a class="md-button" ui-sref="history">History</a>
@@ -14,3 +19,22 @@
     <a ng-hide="navbarCtrl.$rootScope.App.UserService.user" class="md-button" ui-sref="login">Login</a>
 
 </md-toolbar>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="largeIdDialog">
+        <md-dialog layout-padding flex layout="row">
+
+            <canvas id="LargeFBUserToken" style="height: 256px; width: 256px;"></canvas>
+            <div>
+                <md-button class="md-raised md-accent md-hue-2" clipboard text="navbarCtrl.FBUserToken" on-copied="navbarCtrl.success()"
+                    on-error="navbarCtrl.fail(err)">
+                    <i class="fa fa-copy"></i> ID Token
+                </md-button>
+
+                <div layout-padding>
+                    <strong>uid:</strong> {{navbarCtrl.$rootScope.App.UserService.user.uid}}
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</div>

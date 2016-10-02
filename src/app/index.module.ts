@@ -54,7 +54,8 @@ angular.module('monarchApp', [
     'toastr',
     'LocalStorageModule',
     'ui.ace',
-    'firebase'
+    'firebase',
+    'angular-clipboard'
 ])
 
     .constant('moment', moment)
