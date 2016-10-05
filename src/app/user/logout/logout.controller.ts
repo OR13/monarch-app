@@ -26,7 +26,7 @@ export class LogoutController {
     public logoutUser = () => {
         this.$log.log('LogoutController.logoutUser')
         this.UserService.logout().then(() => {
-            this.$state.go('feed');
+            this.$state.go('hello');
         })
     }
 

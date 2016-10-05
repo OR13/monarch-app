@@ -27,16 +27,18 @@ export class NavbarController {
     private $rootScope: IRootScopeService,
     private $mdSidenav: angular.material.ISidenavService,
     private $mdToast: any,
-    private $mdDialog: any
+    private $mdDialog: any,
+    private $state: any
 
   ) {
+
+    this.$log.debug('waht is ', this.$state.current);
 
     this.$scope.$watch(() => {
       return this.$rootScope.App.UserService.user;
     }, (user) => {
       if (user) {
-
-
+        
         this.$log.debug('get token from user here....', user);
 
         if (!this.FBUserToken) {
@@ -62,13 +64,15 @@ export class NavbarController {
 
                   this.account = snapshot.val();
 
-                  var w: any = window;
-                  const qr = new w.QRious({
-                    element: document.getElementById('ethereum_account_qr_code'),
-                    value: this.account.ethereum_accounts[0]
-                  })
+                  if (this.account !== null) {
+                    var w: any = window;
+                    const qr = new w.QRious({
+                      element: document.getElementById('ethereum_account_qr_code'),
+                      value: this.account.ethereum_accounts[0]
+                    })
 
-                  this.$log.debug('qr ', qr)
+                    this.$log.debug('qr ', qr)
+                  }
 
                 });
 
@@ -122,10 +126,10 @@ export class NavbarController {
   };
 
 
-  public openMenu = ($mdOpenMenu, ev) =>{
-      var originatorEv = ev;
-      $mdOpenMenu(ev);
-    };
+  public openMenu = ($mdOpenMenu, ev) => {
+    var originatorEv = ev;
+    $mdOpenMenu(ev);
+  };
 
 
 }

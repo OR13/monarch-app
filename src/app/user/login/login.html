@@ -1,15 +1,16 @@
-<app-navbar layout="column">
-</app-navbar>
 
-<md-content layout="column" layout-fill>
+<div layout-fill class="unsplash">
 
-    <div class='login-content' layout="column" flex id="login-content" role="main">
+    <app-navbar>
+    </app-navbar>
+
+      <div class='login-content' layout="column" flex id="login-content" role="main">
         <md-input-container layout-align="center center">
             <div layout-margin>
                 <md-button class="md-primary md-raised md-hue-3"  ng-click="loginController.loginWithGithub()">
                     Login
                 </md-button>
-                    <md-button class=""  ui-sref="register">
+                    <md-button class="md-raised"  ui-sref="register">
                     Register
                 </md-button>
             </div>
@@ -17,4 +18,5 @@
 
        
     </div>
-</md-content>
+
+</div>

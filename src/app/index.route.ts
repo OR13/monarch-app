@@ -2,6 +2,13 @@
 export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
   $stateProvider
 
+    .state('hello', {
+      url: '/hello',
+      templateUrl: 'app/hello/hello.html',
+      controller: 'HelloController',
+      controllerAs: 'HelloCtrl'
+    })
+
     .state('feed', {
       url: '/feed',
       templateUrl: 'app/feed/feed.html',
@@ -51,6 +58,5 @@ export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui
       controllerAs: 'pulseCtrl'
     })
 
-
-  $urlRouterProvider.otherwise('/feed');
+  $urlRouterProvider.otherwise('/hello');
 }

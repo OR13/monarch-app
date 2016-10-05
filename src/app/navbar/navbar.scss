@@ -1,9 +1,14 @@
 
  
-
 .brand-link {
   text-decoration: none;
   color: #000;
   white-space: nowrap;
 }
 
+#ethereum_account_qr_code{
+    height: 128px;
+    width: 128px;
+    // margin-left: auto;
+    // margin-right: auto;
+}
