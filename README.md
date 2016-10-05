@@ -14,8 +14,7 @@
 You will need to configure your IPFS node to support CORS for localhost and production.
 
 ```
-ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://localhost:3000\"]"
-ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://monarch.transmute.industries\"]"
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://localhost:3000\", "http://monarch.transmute.industries\"]" 
 ```
 
 
@@ -30,7 +29,7 @@ $ gulp gh-deploy
 ### Run All Services Including IPFS
 
 ```
-$ ./_start.sh
+$ npm run dev
 ```
 
 ### Just Front End Dev (no IPFS)

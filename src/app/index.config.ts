@@ -20,6 +20,8 @@ export function config(
     localStorageServiceProvider
         .setPrefix('monarch');
 
+        
+
     $mdThemingProvider
         .theme('monarchAppTheme')
 
@@ -44,13 +46,31 @@ export function config(
             'hue-3': '800',
         })
 
+
+    $mdThemingProvider
+        .theme('alt')
+        .primaryPalette('blue')
+        .accentPalette('light-blue')
+        .warnPalette('orange')
+        .backgroundPalette('grey')
+        .dark();
+
     // $mdThemingProvider
-    //     .theme('alt')
-    //     .primaryPalette('blue')
+    //     .theme('navbar')
+    //     .primaryPalette('amber')
     //     .accentPalette('light-blue')
     //     .warnPalette('orange')
     //     .backgroundPalette('grey')
-    //     .dark();
+     
+
+
+    $mdThemingProvider
+        .theme('dark-grey')
+        .primaryPalette('blue')
+        .accentPalette('light-blue')
+        .warnPalette('orange')
+        .backgroundPalette('grey')
+        .dark();
 
 
     $mdThemingProvider

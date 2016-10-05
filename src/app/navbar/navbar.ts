@@ -17,6 +17,7 @@ export function appNavbar(): angular.IDirective {
 /** @ngInject */
 export class NavbarController {
 
+  public account: any;
   public FBUserToken: string;
 
   constructor(
@@ -56,6 +57,21 @@ export class NavbarController {
                 value: this.FBUserToken
               })
 
+              this.$rootScope.App.firebase.database().ref('/accounts/' + user.uid)
+                .once('value').then((snapshot) => {
+
+                  this.account = snapshot.val();
+
+                  var w: any = window;
+                  const qr = new w.QRious({
+                    element: document.getElementById('ethereum_account_qr_code'),
+                    value: this.account.ethereum_accounts[0]
+                  })
+
+                  this.$log.debug('qr ', qr)
+
+                });
+
             }).catch((error) => {
               // Handle error
               this.$log.error('Unable to generate token...', error);
@@ -68,10 +84,20 @@ export class NavbarController {
 
   }
 
-  public showId = (ev) => {
+  public showMetaMaskAccount = (ev) => {
     this.$mdDialog.show({
       controller: this,
-      contentElement: '#largeIdDialog',
+      contentElement: '#showMetaMaskAccount',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+    });
+  }
+
+  public showMonarchId = (ev) => {
+    this.$mdDialog.show({
+      controller: this,
+      contentElement: '#showMonarchId',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true
@@ -94,6 +120,12 @@ export class NavbarController {
   public fail = (err) => {
     this.$log.error('Error!', err);
   };
+
+
+  public openMenu = ($mdOpenMenu, ev) =>{
+      var originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
 
 
 }

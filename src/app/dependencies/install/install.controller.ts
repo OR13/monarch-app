@@ -52,8 +52,7 @@ export class InstallDependenciesController {
 # Install from https://ipfs.io/
 
 # Configure 
-ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://localhost:3000\"]" 
-ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://monarch.transmute.industries\"]" 
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"http://localhost:3000\", "http://monarch.transmute.industries\"]" 
 
 # Run 
 ipfs daemon

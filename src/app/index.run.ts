@@ -62,26 +62,26 @@ export function runBlock(
     var w: any = window;
  
     $rootScope.$watch(() => {
-        return $rootScope.App.isMetaMaskInstalled && $rootScope.App.isIPFSInstalled;
+        return $rootScope.App.isMetaMaskInstalled;
     }, (isComplete: boolean) => {
         $rootScope.App.isInstallationComplete = isComplete;
     });
 
     $rootScope.$on('$stateChangeStart',  (evt, to, params)=> {
 
-        $rootScope.App.isMetaMaskInstalled = w.web3 !== undefined;
+        // $rootScope.App.isMetaMaskInstalled = w.web3 !== undefined;
 
-        if (!$rootScope.App.isInstallationComplete) {
-            $log.debug('meta mask is disabled... ')
-            $timeout(() => {
-                var t = $mdToast.simple();
-                t.content(`You must install some dependencies.`);
-                t.position('top right');
-                $mdToast.show(t);
-                $state.go('install');
-            }, 1 * 1000)
+        // if (!$rootScope.App.isInstallationComplete) {
+        //     $log.debug('meta mask is disabled... ')
+        //     $timeout(() => {
+        //         var t = $mdToast.simple();
+        //         t.content(`You must install some dependencies.`);
+        //         t.position('top right');
+        //         $mdToast.show(t);
+        //         $state.go('install');
+        //     }, 1 * 1000)
 
-        }
+        // }
 
         if (to.redirectTo) {
             evt.preventDefault();

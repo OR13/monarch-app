@@ -95,7 +95,7 @@ export class MonarchService {
                     "render_config": {
                         "label": "Name",
                         "priority": 2,
-                        "md_theme": "dark-grey",
+                        "md_theme": "alt",
                         "icon": "feedback",
                         "component": ComponentTypes.text_input_v0
                     },
@@ -112,7 +112,7 @@ export class MonarchService {
                     "render_config": {
                         "label": "Date",
                         "priority": 2,
-                        "md_theme": "dark-grey",
+                        "md_theme": "alt",
                         "icon": "feedback",
                         "component": ComponentTypes.text_input_v0
                     },
@@ -129,7 +129,7 @@ export class MonarchService {
                     "render_config": {
                         "label": "Country",
                         "priority": 2,
-                        "md_theme": "dark-grey",
+                        "md_theme": "alt",
                         "icon": "feedback",
                         "component": ComponentTypes.text_input_v0
                     },
@@ -146,7 +146,7 @@ export class MonarchService {
                     "render_config": {
                         "label": "Have Ids?",
                         "priority": 2,
-                        "md_theme": "dark-grey",
+                        "md_theme": "alt",
                         "icon": "feedback",
                         "component": ComponentTypes.boolean_input_v0
                     },
@@ -163,7 +163,7 @@ export class MonarchService {
                     "render_config": {
                         "label": "Are you in need of medical assistance?",
                         "priority": 1,
-                        "md_theme": "dark-grey",
+                        "md_theme": "alt",
                         "icon": "healing",
                         "component": ComponentTypes.boolean_input_v0
                     },
@@ -180,7 +180,7 @@ export class MonarchService {
                 //     "render_config": {
                 //         "label": "Rate this video",
                 //         "priority": 3,
-                //         "md_theme": "dark-grey",
+                //         "md_theme": "alt",
                 //         "icon": "ondemand_video",
                 //         "component": ComponentTypes.content_view_v0
                 //     },

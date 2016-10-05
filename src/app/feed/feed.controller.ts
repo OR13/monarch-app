@@ -91,13 +91,7 @@ export class FeedController {
                         //     this.$log.debug('WHAT data', data)
                         // })
 
-                        var w: any = window;
-                        const qr = new w.QRious({
-                            element: document.getElementById('ethereum_account_qr_code'),
-                            value: this.account.ethereum_accounts[0]
-                        })
-
-                        this.$log.debug('qr ', qr)
+                    
                     }
 
 

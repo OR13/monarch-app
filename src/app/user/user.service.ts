@@ -36,7 +36,7 @@ export class UserService {
     public toastLogin = () => {
         var t = this.$mdToast.simple();
         t.content(`Hello ${this.user.uid}`);
-        t.position('top right');
+        t.position('top left');
         this.$mdToast.show(t);
     }
 

@@ -1,28 +1,110 @@
-<md-toolbar class="app-navbar" layout="row" layout-align="center center" layout-padding>
+<md-toolbar class="app-navbar" layout="row" layout-align="center center" layout-padding md-theme="{{ 'monarchAppTheme' }}"
+    md-theme-watch="">
 
-    <div layout="row">
-        <canvas id="SmallFBUserToken" ng-click="navbarCtrl.showId($event)"></canvas>
-    </div>
+    <a class="brand-link" ui-sref="feed" flex layout="row" hide show-gt-xs>
+        <div>
+            <!--<canvas id="SmallFBUserToken" ng-click="navbarCtrl.showId($event)"></canvas>-->
+            <i class="material-icons" style="font-size: 64px; height: 64px;">fingerprint</i>
+        </div>
+        <div style="padding-left: 8px;">
+            <strong class="">{{navbarCtrl.account.name}}</strong>
+            <br/> Monarch ID
+        </div>
+    </a>
 
-    <a class="brand-link" ui-sref="feed" flex>Monarch</a>
-
-    <a class="md-button" ui-sref="history">History</a>
+    <!--<a class="md-button" ui-sref="history">History</a>
 
     <a class="md-button" ui-sref="pulse">Pulse</a>
 
     <a class="md-button" href="https://github.com/transmute-industries/monarch">Source</a>
 
-    <a class="md-button" href="http://monarch.transmute.industries">Live</a>
+    <a class="md-button" href="http://monarch.transmute.industries">Live</a>-->
 
-    <a ng-show="navbarCtrl.$rootScope.App.UserService.user" class="md-button" ui-sref="logout">Logout</a>
+    <div>
+        <a class="md-button md-raised" ng-click="navbarCtrl.showMonarchId($event)">
+        Monarch ID
+    </a>
+
+        <a class="md-button md-raised" ng-click="navbarCtrl.showMetaMaskAccount($event)">
+        Ethereum Account
+    </a>
+    </div>
+
+    <md-menu ng-show="navbarCtrl.$rootScope.App.UserService.user">
+        <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="navbarCtrl.openMenu($mdOpenMenu, $event)">
+            <i class="material-icons">settings</i>
+        </md-button>
+        <md-menu-content width="4">
+
+            <md-menu-item hide-gt-xs>
+                <md-button>
+                    <div layout="row" flex>
+                        <i class="material-icons" flex>fingerprint</i>
+                        <span>Monarch ID</span>
+                    </div>
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-item hide-gt-xs>
+                <md-button ng-click="navbarCtrl.showMetaMaskAccount($event)">
+                    <div layout="row" flex>
+                        <i class="material-icons" flex>account_balance</i>
+                        <span>Ethereum Wallet</span>
+                    </div>
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-item>
+                <md-button ui-sref="feed">
+                    <div layout="row" flex>
+                        <i class="material-icons" flex>view_day</i>
+                        <span>Feed</span>
+                    </div>
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-item>
+                <md-button ui-sref="history">
+                    <div layout="row" flex>
+                        <i class="material-icons" flex>list</i>
+                        <span>History</span>
+                    </div>
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-item>
+                <md-button ui-sref="install">
+                    <div layout="row" flex>
+                        <i class="material-icons" flex>get_app</i>
+                        <span>Install</span>
+                    </div>
+                </md-button>
+            </md-menu-item>
+
+
+            <md-menu-item>
+                <md-button ui-sref="logout">
+                    <div layout="row" flex>
+                        <span flex></span>
+                        <span>Logout</span>
+                    </div>
+                </md-button>
+            </md-menu-item>
+
+        </md-menu-content>
+
+    </md-menu>
+
+
+
 
     <a ng-hide="navbarCtrl.$rootScope.App.UserService.user" class="md-button" ui-sref="login">Login</a>
 
 </md-toolbar>
 
 <div style="visibility: hidden">
-    <div class="md-dialog-container" id="largeIdDialog">
-        <md-dialog layout-padding flex layout="row">
+    <div class="md-dialog-container" id="showMonarchId">
+        <md-dialog layout-padding flex layout="row" layout-xs="column">
 
             <canvas id="LargeFBUserToken" style="height: 256px; width: 256px;"></canvas>
             <div>
@@ -31,8 +113,27 @@
                     <i class="fa fa-copy"></i> ID Token
                 </md-button>
 
-                <div layout-padding>
-                    <strong>uid:</strong> {{navbarCtrl.$rootScope.App.UserService.user.uid}}
+                <div layout-padding hide show-gt-xs>
+                    <p>{{navbarCtrl.$rootScope.App.UserService.user.uid}}</p>
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="showMetaMaskAccount">
+        <md-dialog layout-padding flex layout="row" layout-xs="column">
+
+            <canvas id="ethereum_account_qr_code" style="height: 256px; width: 256px;"></canvas>
+            <div>
+                <md-button class="md-raised md-accent md-hue-2" clipboard text="navbarCtrl.account.ethereum_accounts[0]" on-copied="navbarCtrl.success()"
+                    on-error="navbarCtrl.fail(err)">
+                    <i class="fa fa-copy"></i> Ethereum Account
+                </md-button>
+
+                <div layout-padding hide show-gt-xs>
+                    <p>{{navbarCtrl.account.ethereum_accounts[0]}}</p>
                 </div>
             </div>
         </md-dialog>
