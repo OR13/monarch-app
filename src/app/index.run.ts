@@ -3,6 +3,8 @@ import {EthereumService} from './com/ethereum.service'
 import {IpfsService} from './com/ipfs.service'
 import {MonarchService} from './com/monarch.service'
 
+import {InfuraService} from './com/infura.service'
+
 import {UserService} from './user/user.service'
 
 
@@ -11,6 +13,7 @@ export interface IMonarchConfig {
     EthereumService: EthereumService;
     IpfsService: IpfsService;
     MonarchService: MonarchService;
+    InfuraService: InfuraService;
     firebaseConfig: any;
     firebase: any;
     UserService: UserService;
@@ -35,7 +38,8 @@ export function runBlock(
     EthereumService: EthereumService,
     IpfsService: IpfsService,
     MonarchService: MonarchService,
-    UserService: UserService
+    UserService: UserService,
+    InfuraService: InfuraService
 ) {
 
     var w = <any>window;
@@ -47,6 +51,7 @@ export function runBlock(
     $rootScope.App.EthereumService = EthereumService;
     $rootScope.App.IpfsService = IpfsService;
     $rootScope.App.MonarchService = MonarchService;
+    $rootScope.App.InfuraService = InfuraService;
 
     $rootScope.App.firebaseConfig = {
         apiKey: "AIzaSyDIXrTv0TD9zdaCy5n_QXm6_VMaS-1B3sQ",

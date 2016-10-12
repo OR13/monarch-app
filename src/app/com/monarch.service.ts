@@ -85,12 +85,11 @@ export class MonarchService {
     ) {
 
 
-        var cron_expr = '0/120 * * * *';
 
         this.ActivitySuite = {
             activity_specs: [
                 {
-                    "cron_expression": cron_expr,
+                    "cron_expression": null,
                     "expiration_criteria": "NEVER",
                     "render_config": {
                         "label": "Name",
@@ -107,7 +106,7 @@ export class MonarchService {
                     }
                 },
                 {
-                    "cron_expression": cron_expr,
+                    "cron_expression": null,
                     "expiration_criteria": "NEVER",
                     "render_config": {
                         "label": "Date",
@@ -124,7 +123,7 @@ export class MonarchService {
                     }
                 },
                 {
-                    "cron_expression": cron_expr,
+                    "cron_expression": null,
                     "expiration_criteria": "NEVER",
                     "render_config": {
                         "label": "Country",
@@ -141,7 +140,7 @@ export class MonarchService {
                     }
                 },
                 {
-                    "cron_expression": cron_expr,
+                    "cron_expression": null,
                     "expiration_criteria": "NEVER",
                     "render_config": {
                         "label": "Have Ids?",
@@ -158,7 +157,7 @@ export class MonarchService {
                     }
                 },
                 {
-                    "cron_expression": cron_expr,
+                    "cron_expression": null,
                     "expiration_criteria": "NEVER",
                     "render_config": {
                         "label": "Are you in need of medical assistance?",
@@ -220,8 +219,6 @@ export class MonarchService {
             }
         })
     }
-
-
 
     public initKeen = () => {
         KeenAsync.ready(() => {

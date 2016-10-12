@@ -5,23 +5,27 @@ import { routerConfig } from '../app/index.route';
 import { runBlock } from '../app/index.run';
 import { FeedController } from '../app/feed/feed.controller';
 
-import { SecurityService} from '../app/com/security.service';
-import { EthereumService} from '../app/com/ethereum.service';
-import { IpfsService} from '../app/com/ipfs.service';
+import { SecurityService } from '../app/com/security.service';
+import { EthereumService } from '../app/com/ethereum.service';
+import { IpfsService } from '../app/com/ipfs.service';
 
-import { MonarchService} from '../app/com/monarch.service';
-import { UserService} from '../app/user/user.service';
+import { InfuraService } from '../app/com/infura.service';
 
-import { LoginController} from '../app/user/login/login.controller';
-import { LogoutController} from '../app/user/logout/logout.controller';
-import { RegisterController} from '../app/user/register/monarch/register.controller';
+import { MonarchService } from '../app/com/monarch.service';
+import { UserService } from '../app/user/user.service';
 
-import {HelloController} from '../app/hello/hello.controller';
 
-import { InstallDependenciesController} from '../app/dependencies/install/install.controller';
 
-import { HistoryController} from '../app/history/history.controller';
-import { PulseController} from '../app/pulse/pulse.controller';
+import { LoginController } from '../app/user/login/login.controller';
+import { LogoutController } from '../app/user/logout/logout.controller';
+import { RegisterController } from '../app/user/register/monarch/register.controller';
+
+import { HelloController } from '../app/hello/hello.controller';
+
+import { InstallDependenciesController } from '../app/dependencies/install/install.controller';
+
+import { HistoryController } from '../app/history/history.controller';
+import { PulseController } from '../app/pulse/pulse.controller';
 
 
 import { appNavbar } from '../app/navbar/navbar';
@@ -77,6 +81,10 @@ angular.module('monarchApp', [
     .service('SecurityService', SecurityService)
     .service('MonarchService', MonarchService)
     .service('UserService', UserService)
+
+    .service('InfuraService', InfuraService)
+
+
 
 
     .service('IpfsService', IpfsService)
