@@ -25,9 +25,8 @@ export class InfuraService {
 
         this.w = window;
 
-        this.$log.debug('LOL: ', this.w.Uport)
 
-        let web3 = new Web3()
+
         let options = {
             ipfsProvider: {
                 host: 'ipfs.infura.io',
@@ -37,26 +36,32 @@ export class InfuraService {
             }
         }
         let uport = new Uport('MyDApp', options)
-        let rpcUrl = "http://localhost:8545"
+
+        let rpcUrl = "https://morden.infura.io/CywPeJFhutLgQVGeY1Ru"
+
         let uportProvider = uport.getUportProvider(rpcUrl)
 
-        web3.setProvider(uportProvider)
+        this.w.web3.setProvider(uportProvider)
 
-        uport.getUserPersona()
-            .then((persona) => {
-                let profile = persona.getProfile()
-                console.log(profile)
-            })
+          this.$log.debug('LOL: ', this.w.Uport)
 
-        // if (!this.w.web3) {
+          this.$timeout(() => {
+
+                // uport.getUserPersona()
+                //     .then((persona) => {
+                //         let profile = persona.getProfile()
+                //         console.log(profile)
+                //     })
 
 
-        //     this.$timeout(() => {
+            }, 3 * 1000)
+
+        if (!this.w.web3) {
 
 
-        //     }, 3 * 1000)
 
-        // }
+
+        }
 
     }
 

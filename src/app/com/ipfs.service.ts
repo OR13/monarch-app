@@ -83,10 +83,10 @@ export class IpfsService {
 
         var w: any = window;
 
-        var host = '127.0.0.1';
+        var host = 'ipfs.infura.io';
         var port = '5001';
 
-        this.ipfs = w.IpfsApi(host, port);
+        this.ipfs = w.IpfsApi(host, port, {protocol: 'https'});
 
         this.ipfs.id()
             .then((id) => {
