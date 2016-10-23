@@ -8,8 +8,6 @@ export class EthereumService {
 
     public w: any;
 
-
-
     public accounts: Array<string>;
 
     /** @ngInject */
@@ -24,16 +22,16 @@ export class EthereumService {
         private $rootScope: IRootScopeService
     ) {
 
-        this.w = window;
-        this.web3 = this.w.web3;
-        
-
-
-        if (this.w.web3) {
-            // this.watchForAccounts();
-            this.accounts = this.w.web3.eth.accounts;
-            // this.$rootScope.App.isMetaMaskInstalled = true;
-        }
+        // this.w = window;
+        // this.web3 = this.w.web3;
+        //
+        //
+        //
+        // if (this.w.web3) {
+        //     // this.watchForAccounts();
+        //     this.accounts = this.w.web3.eth.accounts;
+        //     // this.$rootScope.App.isMetaMaskInstalled = true;
+        // }
 
     }
 

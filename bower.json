@@ -15,7 +15,7 @@
     "animate.css": "~3.4.0",
     "angular": "~1.4.2",
     "angular-moment": "~0.10.3",
-    "web3": "~0.16.0",
+    "web3": "^0.16.0",
     "sjcl": "~1.0.3",
     "angular-local-storage": "~0.2.7",
     "later": "^1.2.0",
