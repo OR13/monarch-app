@@ -25,38 +25,40 @@ export class InfuraService {
 
         this.w = window;
 
-        this.web3 = new Web3();
+        // this.web3 = new Web3();
+
+        // this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
 
         //   this.$log.debug('LOL: ', this.w.Uport)
 
-          this.$timeout(() => {
+        //   this.$timeout(() => {
 
-            let options = {
-                ipfsProvider: {
-                    host: 'ipfs.infura.io',
-                    port: '5001',
-                    protocol: 'https',
-                    root: ''
-                }
-            }
-            let uport = new Uport('MyDApp', options)
+        //     let options = {
+        //         ipfsProvider: {
+        //             host: 'ipfs.infura.io',
+        //             port: '5001',
+        //             protocol: 'https',
+        //             root: ''
+        //         }
+        //     }
+        //     let uport = new Uport('MyDApp', options)
 
-            let rpcUrl = "https://morden.infura.io/CywPeJFhutLgQVGeY1Ru"
+        //     let rpcUrl = "https://localhost:8545"
 
-            let uportProvider = uport.getUportProvider(rpcUrl)
+        //     let uportProvider = uport.getUportProvider(rpcUrl)
 
-            this.web3.setProvider(uportProvider)
+        //     this.web3.setProvider(uportProvider)
 
-            $log.debug('window: ', this.web3)
+        //     $log.debug('window: ', this.web3)
 
-                // uport.getUserPersona()
-                //     .then((persona) => {
-                //         let profile = persona.getProfile()
-                //         console.log(profile)
-                //     })
+        //         // uport.getUserPersona()
+        //         //     .then((persona) => {
+        //         //         let profile = persona.getProfile()
+        //         //         console.log(profile)
+        //         //     })
 
-            }, 3 * 1000)
+        //     }, 3 * 1000)
 
         if (!this.web3) {
 

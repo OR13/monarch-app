@@ -32,14 +32,14 @@ export class NavbarController {
 
   ) {
 
-    this.$log.debug('waht is ', this.$state.current);
+    // this.$log.debug('waht is ', this.$state.current);
 
     this.$scope.$watch(() => {
       return this.$rootScope.App.UserService.user;
     }, (user) => {
       if (user) {
         
-        this.$log.debug('get token from user here....', user);
+        // this.$log.debug('get token from user here....', user);
 
         if (!this.FBUserToken) {
           this.$rootScope.App.firebase.auth().currentUser.getToken(/* forceRefresh */ false)
@@ -71,7 +71,7 @@ export class NavbarController {
                       value: this.account.ethereum_accounts[0]
                     })
 
-                    this.$log.debug('qr ', qr)
+                    // this.$log.debug('qr ', qr)
                   }
 
                 });

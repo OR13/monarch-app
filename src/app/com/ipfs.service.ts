@@ -90,7 +90,7 @@ export class IpfsService {
 
         this.ipfs.id()
             .then((id) => {
-                this.$log.debug('my id is: ', id)
+                // this.$log.debug('my id is: ', id)
                 this.$rootScope.App.isIPFSInstalled = true;
             })
             .catch((err) => {
@@ -100,7 +100,6 @@ export class IpfsService {
             })
 
     }
-
 
 
 }

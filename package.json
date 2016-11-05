@@ -2,6 +2,7 @@
   "name": "monarch",
   "version": "0.0.1",
   "scripts": {
+    "truffle-serve" : "cd truffle && truffle compile && truffle build && truffle migrate && cd .. && gulp truffle-sync && npm run clean-serve",
     "clean-serve": "clear && gulp clean && gulp serve",
     "test": "gulp test",
     "ipfs-daemon": "ipfs daemon",

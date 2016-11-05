@@ -1,6 +1,7 @@
 
 import {IRootScopeService } from '../index.run';
 
+
 export class HelloController {
 
     /* @ngInject */
