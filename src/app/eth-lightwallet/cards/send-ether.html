@@ -1,0 +1,107 @@
+<md-card ng-hide="ethLightWalletCtrl.hide_sendEth">
+
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Send Ether</span>
+        </md-card-title-text>
+
+        <md-button class="md-raised md-accent" ng-click="ethLightWalletCtrl.sendEth()">Send Ether </md-button>
+
+    </md-card-title>
+
+    <md-card-content>
+        <div layout="column">
+
+            <md-input-container>
+                <label>From</label>
+                <input type="text" ng-model="ethLightWalletCtrl.sendFrom" placeholder="..."></input>
+            </md-input-container>
+
+            <md-input-container>
+                <label>To</label>
+                <md-select ng-model="metaCoinCtrl.sendTo">
+                    <!--<md-option><em>None</em></md-option>-->
+                    <md-option ng-repeat="account in ethLightWalletCtrl.addresses" ng-value="account">
+                        {{account}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+
+            <md-input-container>
+                <label>Ammount</label>
+                <input type="number" ng-model="ethLightWalletCtrl.sendValueAmount" placeholder="..."></input>
+            </md-input-container>
+        </div>
+    </md-card-content>
+</md-card>
+
+
+<!--
+  <h2>Function Call</h2>
+  <div>Caller: <select ng-model="ethLightWalletCtrl.functionCaller"></select></div>
+  <div>Contract Address: <input type="text" size="40" ng-model="ethLightWalletCtrl.contractAddr"></input>
+  </div>
+  <div>Contract ABI: <input type="text" size="40" ng-model="ethLightWalletCtrl.contractAbi"></input>
+  </div>
+  <div>Function Name: <input type="text" size="20" ng-model="ethLightWalletCtrl.functionName"></input>
+  </div>
+  <div>Function Arguments: <input type="text" size="40" ng-model="ethLightWalletCtrl.functionArgs"></input>
+  </div>
+  <div>Value (Ether): <input type="text" ng-model="ethLightWalletCtrl.sendValueAmount"></div>
+  <div><button ng-click="ethLightWalletCtrl.functionCall()">Call Function</button></div>
+
+  -->
+<md-card ng-hide="ethLightWalletCtrl.hide_sendEth">
+
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Function Call</span>
+        </md-card-title-text>
+
+        <md-button class="md-raised md-accent" ng-click="ethLightWalletCtrl.functionCall()">Call Function </md-button>
+
+    </md-card-title>
+
+    <md-card-content>
+        <div layout="column">
+
+
+            <md-input-container>
+                <label>Caller</label>
+                <md-select ng-model="metaCoinCtrl.functionCaller">
+                    <!--<md-option><em>None</em></md-option>-->
+                    <md-option ng-repeat="account in ethLightWalletCtrl.addresses" ng-value="account" ng-disabled="$index === 0">
+                        {{account}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+
+            <md-input-container>
+                <label>Contact Address</label>
+                <input type="text" ng-model="ethLightWalletCtrl.contractAddr" placeholder="..."></input>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Contact ABI</label>
+                <input type="text" ng-model="ethLightWalletCtrl.contractAbi" placeholder="..."></input>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Function Name</label>
+                <input type="text" ng-model="ethLightWalletCtrl.functionName" placeholder="..."></input>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Function Arguments</label>
+                <input type="text" ng-model="ethLightWalletCtrl.functionArgs" placeholder="..."></input>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Ammount</label>
+                <input type="text" ng-model="ethLightWalletCtrl.sendValueAmount" placeholder="..."></input>
+            </md-input-container>
+        </div>
+    </md-card-content>
+</md-card>

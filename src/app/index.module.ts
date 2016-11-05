@@ -22,6 +22,12 @@ import { RegisterController } from '../app/user/register/monarch/register.contro
 
 import { HelloController } from '../app/hello/hello.controller';
 
+import { MetaCoinController } from '../app/metacoin/metacoin.controller';
+
+
+import { EthLightWalletController } from '../app/eth-lightwallet/eth-lightwallet.controller';
+
+
 import { InstallDependenciesController } from '../app/dependencies/install/install.controller';
 
 import { HistoryController } from '../app/history/history.controller';
@@ -91,7 +97,8 @@ angular.module('monarchApp', [
     .controller('FeedController', FeedController)
 
     .controller('HelloController', HelloController)
-
+    .controller('MetaCoinController', MetaCoinController)
+    .controller('EthLightWalletController', EthLightWalletController)
 
 
     .controller('LoginController', LoginController)

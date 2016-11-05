@@ -6,7 +6,7 @@
     "truffle-migrate": "cd truffle && truffle migrate",
     "truffle-compile": "cd truffle && truffle compile",
     "truffle-build": "cd truffle && truffle build",
-    "truffle-all":"npm run truffle-compile && npm run truffle-build && npm run truffle-migrate && gulp truffle-sync",
+    "truffle-all": "npm run truffle-compile && npm run truffle-build && npm run truffle-migrate && gulp truffle-sync",
     "truffle-serve": "npm run truffle-all && gulp install-eth-lightwallet && npm run clean-serve",
     "clean-serve": "clear && gulp clean && gulp serve",
     "test": "gulp test",
@@ -67,7 +67,9 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "asynch": "^0.5.2",
     "eth-lightwallet": "^2.5.3",
+    "hooked-web3-provider": "^1.0.0",
     "ipfs-api": "^8.0.3",
     "uport-lib": "^1.3.0"
   }

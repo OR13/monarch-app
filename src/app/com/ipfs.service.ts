@@ -83,21 +83,21 @@ export class IpfsService {
 
         var w: any = window;
 
-        var host = 'ipfs.infura.io';
-        var port = '5001';
+        // var host = 'ipfs.infura.io';
+        // var port = '5001';
 
-        this.ipfs = w.IpfsApi(host, port, {protocol: 'https'});
+        // this.ipfs = w.IpfsApi(host, port, {protocol: 'https'});
 
-        this.ipfs.id()
-            .then((id) => {
-                // this.$log.debug('my id is: ', id)
-                this.$rootScope.App.isIPFSInstalled = true;
-            })
-            .catch((err) => {
-                console.log('Fail: ', err)
-                // promptIpfsSetup();
-                this.$rootScope.App.isIPFSInstalled = false;
-            })
+        // this.ipfs.id()
+        //     .then((id) => {
+        //         // this.$log.debug('my id is: ', id)
+        //         this.$rootScope.App.isIPFSInstalled = true;
+        //     })
+        //     .catch((err) => {
+        //         console.log('Fail: ', err)
+        //         // promptIpfsSetup();
+        //         this.$rootScope.App.isIPFSInstalled = false;
+        //     })
 
     }
 

@@ -3,46 +3,5 @@
     <app-navbar>
     </app-navbar>
 
-    <md-card>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">MetaCoin</span>
-                <span class="md-subhead">
-                   Balance: 
-                    <span ng-bind="helloCtrl.balance"></span>
-                </span>
-            </md-card-title-text>
-            <md-button flex class="md-raised md-accent" id="send" ng-click="helloCtrl.sendCoin()">Send MetaCoins</md-button>
-        </md-card-title>
-
-        <md-card-content>
-            <div layout="row">
-                <md-input-container>
-                    <label>Send Amount</label>
-                    <input type="number" id="amount" placeholder="e.g., 95" ng-model="helloCtrl.sendingAmmount"></input>
-                </md-input-container>
-
-                <!-- Hidden For Binding From Truffle -->
-                 <md-input-container ng-hide="true">
-                    <label>Receiving Account</label>
-                   <input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
-                </md-input-container>
-
-                <md-input-container flex >
-                    <label>Receiving Account </label>
-                    <md-select ng-model="helloCtrl.receivingAccount" id="receiver">
-                        <!--<md-option><em>None</em></md-option>-->
-                        <md-option ng-repeat="account in helloCtrl.accounts" ng-value="account" ng-disabled="$index === 0">
-                            {{account}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-
-            </div>
-
-            <span ng-bind="helloCtrl.status"></span>
-
-        </md-card-content>
-    </md-card>
-
+ 
 </div>

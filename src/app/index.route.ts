@@ -9,6 +9,20 @@ export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui
       controllerAs: 'helloCtrl'
     })
 
+     .state('metacoin', {
+      url: '/metacoin',
+      templateUrl: 'app/metacoin/metacoin.html',
+      controller: 'MetaCoinController',
+      controllerAs: 'metaCoinCtrl'
+    })
+
+     .state('eth-lightwallet', {
+      url: '/eth-lightwallet',
+      templateUrl: 'app/eth-lightwallet/eth-lightwallet.html',
+      controller: 'EthLightWalletController',
+      controllerAs: 'ethLightWalletCtrl'
+    })
+
     .state('feed', {
       url: '/feed',
       templateUrl: 'app/feed/feed.html',

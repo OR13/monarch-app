@@ -1,0 +1,65 @@
+<md-card ng-hide="ethLightWalletCtrl.hide_generateRandomSeed">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Create New Wallet</span>
+        </md-card-title-text>
+
+        <md-button class="md-raised md-accent" ng-click="ethLightWalletCtrl.generateRandomSeed()()">Create New Wallet </md-button>
+
+    </md-card-title>
+
+    <md-card-content>
+        <div layout="row">
+            <md-input-container flex>
+                <label>Entropy</label>
+                <input type="text" ng-model="ethLightWalletCtrl.userEntropy" placeholder="Type random text to generate entropy"></input>
+            </md-input-container>
+        </div>
+    </md-card-content>
+</md-card>
+
+
+<md-card ng-hide="ethLightWalletCtrl.hide_deriveKeyFromPassword">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">WARNING: ONLY SHOWN ONCE</span>
+        </md-card-title-text>
+
+        <!--<md-button class="md-raised md-accent" ng-click="ethLightWalletCtrl.copySeed()">Copy Random Seed</md-button>-->
+
+    </md-card-title>
+
+    <md-card-content>
+        <div layout="column">
+
+            <md-input-container flex>
+
+                <p> Your new wallet seed is: </p>
+
+                <h3 ng-bind="ethLightWalletCtrl.randomSeed"> </h3>
+
+                <p>
+                    Please write this down on paper or in a password manager, you will need this to access your wallet. Do not let anyone see
+                    this seed or they can take your Ether.
+                </p>
+
+            </md-input-container>
+
+            <h4>Please enter a password to encrypt your seed while in the browser.</h4>
+
+            <div layout="row">
+                <md-input-container flex>
+                    <label>Password</label>
+                    <input type="password" ng-model="ethLightWalletCtrl.password"></input>
+                </md-input-container>
+
+                <md-input-container>
+                    <md-button class="md-raised md-accent" ng-click="ethLightWalletCtrl.deriveKeyFromPassword(ethLightWalletCtrl.password)">Derive Key From Password</md-button>
+                </md-input-container>
+
+            </div>
+
+
+        </div>
+    </md-card-content>
+</md-card>
