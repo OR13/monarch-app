@@ -47,7 +47,6 @@ import { ecBooleanInputV0 } from '../app/feed/capture/boolean_input_v0/boolean_i
 declare var moment: moment.MomentStatic;
 declare var jQuery: any;
 
-
 angular.module('monarchApp', [
     'ngMaterial',
     'ngAnimate',

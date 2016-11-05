@@ -9,8 +9,11 @@ var pack    = require('../package.json')
 var $       = require('gulp-load-plugins')();
 
 function truffleSync () {
+
   return gulp.src("truffle/build/*")
     .pipe( gulp.dest('src/assets/truffle') );
+
+
 }
 
 
