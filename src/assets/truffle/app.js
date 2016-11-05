@@ -21636,9 +21636,9 @@ var SolidityEvent = require("web3/lib/web3/event.js");
     ],
     "unlinked_binary": "0x606060405260358060106000396000f3650402af6afb0450606060405260e060020a600035046396e4ee3d81146024575b6007565b602435600435026060908152602090f3",
     "events": {},
-    "updated_at": 1478305288660,
+    "updated_at": 1478357203759,
     "links": {},
-    "address": "0x339a3b877535e6b2fa4f74fb37c4d0982012d99c"
+    "address": "0xc88273765f1fa37887fb12962ec05d2e4a9505a7"
   }
 };
 
@@ -22229,11 +22229,11 @@ var SolidityEvent = require("web3/lib/web3/event.js");
         "type": "event"
       }
     },
-    "updated_at": 1478305288663,
+    "updated_at": 1478357203762,
     "links": {
-      "ConvertLib": "0x339a3b877535e6b2fa4f74fb37c4d0982012d99c"
+      "ConvertLib": "0xc88273765f1fa37887fb12962ec05d2e4a9505a7"
     },
-    "address": "0xc1c4bf18d914407e9cb38d2b790af9b910807365"
+    "address": "0x518defc733a4f7581920ba4747e1e73c7e88f03a"
   }
 };
 
@@ -22773,8 +22773,8 @@ var SolidityEvent = require("web3/lib/web3/event.js");
     ],
     "unlinked_binary": "0x606060405260008054600160a060020a0319163317905561014f806100246000396000f3606060405260e060020a60003504630900f010811461003f578063445df0ac146100ce5780638da5cb5b146100dc578063fdacd576146100f3575b610002565b346100025761011e60043560008054600160a060020a039081163390911614156100ca57604080516001547ffdacd576000000000000000000000000000000000000000000000000000000008252600482015290518392600160a060020a0384169263fdacd576926024828101939282900301818387803b156100025760325a03f115610002575050505b5050565b346100025761012060015481565b3461000257610132600054600160a060020a031681565b346100025761011e60043560005433600160a060020a039081169116141561011b5760018190555b50565b005b60408051918252519081900360200190f35b60408051600160a060020a03929092168252519081900360200190f3",
     "events": {},
-    "updated_at": 1478305288664,
-    "address": "0x9fbf58d16cf70db06901619d89fc18df439eb115",
+    "updated_at": 1478357203764,
+    "address": "0x2ba9c134b531fcbd21c993b81f158df1308511de",
     "links": {}
   }
 };
@@ -43921,7 +43921,7 @@ window.addEventListener('load', function() {
 
                                                                 
 
-  [Migrations,MetaCoin,ConvertLib].forEach(function(contract) {         
+  [ConvertLib,MetaCoin,Migrations].forEach(function(contract) {         
 
     contract.setProvider(window.web3.currentProvider);          
 
@@ -43933,58 +43933,7 @@ window.addEventListener('load', function() {
 
  
 
-var accounts;
-var account;
 
-function setStatus(message) {
-  var status = document.getElementById("status");
-  status.innerHTML = message;
-};
-
-function refreshBalance() {
-  var meta = MetaCoin.deployed();
-
-  meta.getBalance.call(account, {from: account}).then(function(value) {
-    var balance_element = document.getElementById("balance");
-    balance_element.innerHTML = value.valueOf();
-  }).catch(function(e) {
-    console.log(e);
-    setStatus("Error getting balance; see log.");
-  });
-};
-
-function sendCoin() {
-  var meta = MetaCoin.deployed();
-
-  var amount = parseInt(document.getElementById("amount").value);
-  var receiver = document.getElementById("receiver").value;
-
-  setStatus("Initiating transaction... (please wait)");
-
-  meta.sendCoin(receiver, amount, {from: account}).then(function() {
-    setStatus("Transaction complete!");
-    refreshBalance();
-  }).catch(function(e) {
-    console.log(e);
-    setStatus("Error sending coin; see log.");
-  });
-};
-
-window.onload = function() {
-  web3.eth.getAccounts(function(err, accs) {
-    if (err != null) {
-      alert("There was an error fetching your accounts.");
-      return;
-    }
-
-    if (accs.length == 0) {
-      alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
-      return;
-    }
-
-    accounts = accs;
-    account = accounts[0];
-
-    refreshBalance();
-  });
+window.monarchTruffleApp = {
+  metaCoin: MetaCoin.deployed()
 }

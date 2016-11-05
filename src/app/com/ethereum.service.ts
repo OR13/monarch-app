@@ -29,7 +29,7 @@ export class EthereumService {
 
         this.accounts = this.web3.eth.accounts;
 
-        this.$log.debug( " expect accounts: ", this.accounts)
+        // this.$log.debug( " expect accounts: ", this.accounts)
         // this.watchForAccounts();
 
         //
@@ -47,7 +47,7 @@ export class EthereumService {
         this.$rootScope.$watch(() => {
             return this.web3.eth.accounts;
         }, (accounts) => {
-            this.$log.debug('got accounts: ', accounts);
+            // this.$log.debug('got accounts: ', accounts);
             this.accounts = accounts;
         })
     }
