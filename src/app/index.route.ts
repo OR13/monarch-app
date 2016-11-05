@@ -6,7 +6,7 @@ export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui
       url: '/hello',
       templateUrl: 'app/hello/hello.html',
       controller: 'HelloController',
-      controllerAs: 'HelloCtrl'
+      controllerAs: 'helloCtrl'
     })
 
     .state('feed', {

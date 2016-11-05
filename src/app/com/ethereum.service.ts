@@ -22,8 +22,16 @@ export class EthereumService {
         private $rootScope: IRootScopeService
     ) {
 
-        // this.w = window;
-        // this.web3 = this.w.web3;
+        this.w = window;
+        this.web3 = new this.w.Web3();
+
+        this.web3 = new this.w.Web3(new this.w.Web3.providers.HttpProvider("http://localhost:8545"));
+
+        this.accounts = this.web3.eth.accounts;
+
+        this.$log.debug( " expect accounts: ", this.accounts)
+        // this.watchForAccounts();
+
         //
         //
         //
@@ -35,13 +43,14 @@ export class EthereumService {
 
     }
 
-    // public watchForAccounts = () => {
-    //     this.$rootScope.$watch(() => {
-    //         return this.w.web3.eth.accounts;
-    //     }, (accounts) => {
-    //         this.$log.debug('got accounts: ', accounts);
-    //     })
-    // }
+    public watchForAccounts = () => {
+        this.$rootScope.$watch(() => {
+            return this.web3.eth.accounts;
+        }, (accounts) => {
+            this.$log.debug('got accounts: ', accounts);
+            this.accounts = accounts;
+        })
+    }
 
 
 

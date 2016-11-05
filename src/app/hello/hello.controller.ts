@@ -4,6 +4,10 @@ import {IRootScopeService } from '../index.run';
 
 export class HelloController {
 
+    public accounts: Array<string>;
+    public receivingAccount: string;
+
+
     /* @ngInject */
     constructor(
         public $scope: angular.IScope,
@@ -16,10 +20,25 @@ export class HelloController {
         public $sce: angular.ISCEService,
         public $mdDialog: any,
         public toastr: any,
-        public $firebaseObject: any
+        public $firebaseObject: any,
+   
     ) {
 
+        // this.accounts = this.$rootScope.App.EthereumService.accounts;
+
+        this.watchForAccounts();
+
     }
+
+      public watchForAccounts = () => {
+        this.$rootScope.$watch(() => {
+            return this.$rootScope.App.EthereumService.accounts
+        }, (accounts) => {
+            this.$log.debug('got accounts: ', accounts);
+            this.accounts = accounts;
+        })
+    }
+
 
 
 }
