@@ -44,6 +44,7 @@ export class EthLightWalletController {
         public $scope: any,
         public $mdSidenav: any,
         public $http: angular.IHttpService,
+        public $interval: angular.IIntervalService,
         public $log: angular.ILogService,
         public $rootScope: IRootScopeService,
         public $timeout: angular.ITimeoutService,
@@ -73,8 +74,6 @@ export class EthLightWalletController {
 
             this.sendFrom = '0x0aa0894839cc227adb7e4c17d3b8e12f8aab9ecd'; // this.addresses[0];
             this.sendTo = this.addresses[1];
-
-
 
 
             this.getBalances();
@@ -117,7 +116,11 @@ export class EthLightWalletController {
 
             this.newAddresses(password);
             this.setWeb3Provider(global_keystore);
-            this.getBalances();
+
+            this.$interval(() => {
+                this.$log.debug('getting balances...');
+                this.getBalances();
+            }, 3 * 1000)
 
             this.hide_deriveKeyFromPassword = true;
             this.hide_sendEth = false;
@@ -163,6 +166,14 @@ export class EthLightWalletController {
             console.log('txhash: ' + txhash)
             this.txhash = txhash;
             this.$scope.$apply();
+
+
+            var result = web3.eth.sign(this.sendFrom, this.txhash); // second argument is web3.sha3("xyz")
+            console.log('signed transaction: ', result);
+
+
+
+
         })
     }
 
@@ -182,6 +193,7 @@ export class EthLightWalletController {
             console.log('txhash: ' + txhash)
 
             this.txhash = txhash;
+            this.$scope.$apply();
         }
         args.push(callback)
         contract[functionName].apply(this, args)

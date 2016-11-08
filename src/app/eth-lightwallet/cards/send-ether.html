@@ -17,15 +17,20 @@
                 <input type="text" ng-model="ethLightWalletCtrl.sendFrom" placeholder="..."></input>
             </md-input-container>
 
-            <md-input-container>
+               <md-input-container>
+                <label>To</label>
+                <input type="text" ng-model="ethLightWalletCtrl.sendTo" placeholder="..."></input>
+            </md-input-container>
+
+            <!--<md-input-container>
                 <label>To</label>
                 <md-select ng-model="metaCoinCtrl.sendTo">
-                    <!--<md-option><em>None</em></md-option>-->
+                  
                     <md-option ng-repeat="account in ethLightWalletCtrl.addresses" ng-value="account">
                         {{account}}
                     </md-option>
                 </md-select>
-            </md-input-container>
+            </md-input-container>-->
 
 
             <md-input-container>
@@ -52,7 +57,9 @@
   <div><button ng-click="ethLightWalletCtrl.functionCall()">Call Function</button></div>
 
   -->
-<md-card ng-hide="ethLightWalletCtrl.hide_sendEth">
+
+  
+<!--<md-card ng-hide="ethLightWalletCtrl.hide_sendEth">
 
     <md-card-title>
         <md-card-title-text>
@@ -70,7 +77,6 @@
             <md-input-container>
                 <label>Caller</label>
                 <md-select ng-model="metaCoinCtrl.functionCaller">
-                    <!--<md-option><em>None</em></md-option>-->
                     <md-option ng-repeat="account in ethLightWalletCtrl.addresses" ng-value="account" ng-disabled="$index === 0">
                         {{account}}
                     </md-option>
@@ -104,4 +110,4 @@
             </md-input-container>
         </div>
     </md-card-content>
-</md-card>
+</md-card>-->
