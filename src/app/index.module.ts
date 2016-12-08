@@ -20,6 +20,10 @@ import { LoginController } from '../app/user/login/login.controller';
 import { LogoutController } from '../app/user/logout/logout.controller';
 import { RegisterController } from '../app/user/register/monarch/register.controller';
 
+
+
+
+import { WelcomeController } from '../app/welcome/welcome.controller';
 import { HelloController } from '../app/hello/hello.controller';
 
 import { MetaCoinController } from '../app/metacoin/metacoin.controller';
@@ -37,6 +41,7 @@ import { PulseController } from '../app/pulse/pulse.controller';
 import { appNavbar } from '../app/navbar/navbar';
 import { monarchApp } from '../app/app.directive'
 
+import { renderedParticles } from '../app/particles/particles.directive'
 
 
 import { ContentViewV0Controller } from '../app/feed/capture/content_view_v0/content_view_v0.controller'
@@ -52,6 +57,8 @@ import { ecBooleanInputV0 } from '../app/feed/capture/boolean_input_v0/boolean_i
 
 declare var moment: moment.MomentStatic;
 declare var jQuery: any;
+
+
 
 angular.module('monarchApp', [
     'ngMaterial',
@@ -97,6 +104,8 @@ angular.module('monarchApp', [
     .controller('FeedController', FeedController)
 
     .controller('HelloController', HelloController)
+    .controller('WelcomeController', WelcomeController)
+
     .controller('MetaCoinController', MetaCoinController)
     .controller('EthLightWalletController', EthLightWalletController)
 
@@ -121,6 +130,8 @@ angular.module('monarchApp', [
 
     .directive('appNavbar', appNavbar)
     .directive('monarchApp', monarchApp)
+    .directive('renderedParticles', renderedParticles);
+
 
 
 

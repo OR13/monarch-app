@@ -1,170 +1,37 @@
-<md-toolbar class="app-navbar" layout="row" layout-align="left center" layout-padding md-theme="{{ 'monarchAppTheme' }}"
-    md-theme-watch="">
+<md-fab-toolbar class="fab-nav md-left" md-open="navbarCtrl.isOpen" md-direction="'left'">
 
-    <a class="brand-link" ui-sref="hello" flex layout="row" ng-cloak>
-        <div>
-            <!--<canvas id="SmallFBUserToken" ng-click="navbarCtrl.showId($event)"></canvas>-->
-            <i class="material-icons" style="font-size: 64px; height: 64px;">fingerprint</i>
-        </div>
-
-        <div ng-show="navbarCtrl.$rootScope.App.UserService.user" style="padding-left: 8px;">
-            <strong class="">{{navbarCtrl.account.name}} <br/></strong>
-            <span>Monarch ID</span>
-       
-        </div>
-
-        <h3 ng-hide="navbarCtrl.$rootScope.App.UserService.user" style="padding-left: 16px; margin-top: 16px; margin-bottom: 0px;">Monarch ID</h3>
-    </a>
-
-    <!--<a class="md-button" ui-sref="history">History</a>
-
-    <a class="md-button" ui-sref="pulse">Pulse</a>
-
-    <a class="md-button" href="https://github.com/transmute-industries/monarch">Source</a>
-
-    <a class="md-button" href="http://monarch.transmute.industries">Live</a>-->
-
-    <div ng-show="navbarCtrl.$rootScope.App.UserService.user" hide show-gt-xs>
-        <a class="md-button md-raised" ng-click="navbarCtrl.showMonarchId($event)">
-            Monarch ID
-        </a>
-
-        <a class="md-button md-raised" ng-click="navbarCtrl.showMetaMaskAccount($event)">
-            Ethereum Account
-        </a>
-    </div>
-
-    <md-menu ng-show="navbarCtrl.$rootScope.App.UserService.user">
-        <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="navbarCtrl.openMenu($mdOpenMenu, $event)">
-            <i class="material-icons">dashboard</i>
+    <md-fab-trigger ng-show="navbarCtrl.$rootScope.App.UserService.user">
+        <md-button aria-label="menu" class="md-fab md-primary">
+            <md-icon class="material-icons wi">face</md-icon>
         </md-button>
-        <md-menu-content width="4">
+    </md-fab-trigger>
 
-            <md-menu-item hide-gt-xs>
-                <md-button>
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>fingerprint</i>
-                        <span>Monarch ID</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-            <md-menu-item hide-gt-xs>
-                <md-button ng-click="navbarCtrl.showMetaMaskAccount($event)">
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>account_balance</i>
-                        <span>Ethereum Wallet</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-            <md-menu-item>
-                <md-button ui-sref="feed">
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>view_day</i>
-                        <span>Feed</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-              <md-menu-item>
-                <md-button ui-sref="metacoin">
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>group_work</i>
-                        <span>MetaCoin</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-            <md-menu-item>
-                <md-button ui-sref="history">
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>list</i>
-                        <span>History</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-            <md-menu-item>
-                <md-button href="https://github.com/transmute-industries/monarch">
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>code</i>
-                        <span>Source</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-            <md-menu-item>
-                <md-button href="http://monarch.transmute.industries">
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>launch</i>
-                        <span>Live</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-            <md-menu-item>
-                <md-button ui-sref="install">
-                    <div layout="row" flex>
-                        <i class="material-icons" flex>get_app</i>
-                        <span>Install</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-
-            <md-menu-item>
-                <md-button ui-sref="logout">
-                    <div layout="row" flex>
-                        <span flex></span>
-                        <span>Logout</span>
-                    </div>
-                </md-button>
-            </md-menu-item>
-
-        </md-menu-content>
-
-    </md-menu>
-
-    <a ng-hide="navbarCtrl.$rootScope.App.UserService.user || navbarCtrl.$state.current.name === 'login'" ng-hide="navbarCtrl.$rootScope.App.UserService.user"
-        class="md-button md-raised" ui-sref="login">Login</a>
-
-</md-toolbar>
-
-
-
-<div style="visibility: hidden">
-    <div class="md-dialog-container" id="showMonarchId">
-        <md-dialog layout-padding flex layout="column">
-            <canvas id="LargeFBUserToken" style="height: 256px; width: 256px;"></canvas>
-            <div>
-                <md-button class="md-raised md-accent md-hue-2" clipboard text="navbarCtrl.FBUserToken" on-copied="navbarCtrl.success()"
-                    on-error="navbarCtrl.fail(err)">
-                    <i class="fa fa-copy"></i> ID Token
-                </md-button>
-
-                <div layout-padding hide show-gt-xs>
-                    <p>{{navbarCtrl.$rootScope.App.UserService.user.uid}}</p>
-                </div>
-            </div>
-        </md-dialog>
+    <div layout="row">
+        <span flex></span>
+        <a ng-hide="navbarCtrl.$rootScope.App.UserService.user || navbarCtrl.$state.current.name === 'login'" ng-hide="navbarCtrl.$rootScope.App.UserService.user"
+            class="md-button md-raised md-primary " ui-sref="login">Login</a>
     </div>
-</div>
 
-<div style="visibility: hidden">
-    <div class="md-dialog-container" id="showMetaMaskAccount">
-        <md-dialog layout-padding flex layout="column">
-            <canvas id="ethereum_account_qr_code" style="height: 256px; width: 256px;"></canvas>
-            <div>
-                <md-button class="md-raised md-accent md-hue-2" clipboard text="navbarCtrl.account.ethereum_accounts[0]" on-copied="navbarCtrl.success()"
-                    on-error="navbarCtrl.fail(err)">
-                    <i class="fa fa-copy"></i> Ethereum Account
-                </md-button>
+    <md-toolbar>
+        <md-fab-actions class="md-toolbar-tools">
 
-                <div layout-padding hide show-gt-xs>
-                    <p>{{navbarCtrl.account.ethereum_accounts[0]}}</p>
-                </div>
-            </div>
-        </md-dialog>
-    </div>
-</div>
+            <md-button aria-label="comment" class="md-icon-button">
+                <md-icon class="material-icons ">face</md-icon>
+            </md-button>
+
+            <md-button aria-label="comment" ui-sref="metacoin">
+                MetaCoin
+            </md-button>
+
+            <md-button aria-label="comment" ui-sref="eth-lightwallet">
+                Light Wallet
+            </md-button>
+
+            <md-button  aria-label="comment" ui-sref="logout">
+                Logout
+            </md-button>
+
+        </md-fab-actions>
+    </md-toolbar>
+
+</md-fab-toolbar>

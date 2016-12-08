@@ -17,6 +17,7 @@ export function appNavbar(): angular.IDirective {
 /** @ngInject */
 export class NavbarController {
 
+  public isOpen: boolean;
   public account: any;
   public FBUserToken: string;
 

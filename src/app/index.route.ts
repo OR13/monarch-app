@@ -2,6 +2,13 @@
 export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
   $stateProvider
 
+   .state('welcome', {
+      url: '/welcome',
+      templateUrl: 'app/welcome/welcome.html',
+      controller: 'WelcomeController',
+      controllerAs: 'welcomeCtrl'
+    })
+
     .state('hello', {
       url: '/hello',
       templateUrl: 'app/hello/hello.html',
@@ -72,5 +79,5 @@ export function routerConfig($stateProvider: any, $urlRouterProvider: angular.ui
       controllerAs: 'pulseCtrl'
     })
 
-  $urlRouterProvider.otherwise('/hello');
+  $urlRouterProvider.otherwise('/welcome');
 }
