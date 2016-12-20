@@ -74,7 +74,7 @@ export function runBlock(
 
     $rootScope.$on('$stateChangeStart',  (evt, to, params)=> {
 
-        // $rootScope.App.isMetaMaskInstalled = w.web3 !== undefined;
+        $rootScope.App.isMetaMaskInstalled = w.web3 !== undefined;
 
         // if (!$rootScope.App.isInstallationComplete) {
         //     $log.debug('meta mask is disabled... ')

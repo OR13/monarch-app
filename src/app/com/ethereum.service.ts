@@ -1,6 +1,10 @@
 
-import {IRootScopeService} from '../index.run';
-import {SecurityService} from './security.service';
+import { IRootScopeService } from '../index.run';
+import { SecurityService } from './security.service';
+
+var w: any = window;
+
+
 
 export class EthereumService {
 
@@ -23,11 +27,16 @@ export class EthereumService {
     ) {
 
         this.w = window;
-        this.web3 = new this.w.Web3();
 
-        this.web3 = new this.w.Web3(new this.w.Web3.providers.HttpProvider("http://localhost:8545"));
 
-        this.accounts = this.web3.eth.accounts;
+        if (w.web3 !== undefined) {
+            this.accounts = this.web3.eth.accounts;
+
+        } else {
+            // this.web3 = new this.w.Web3();
+            // this.web3 = new this.w.Web3(new this.w.Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+
 
         // this.$log.debug( " expect accounts: ", this.accounts)
         // this.watchForAccounts();

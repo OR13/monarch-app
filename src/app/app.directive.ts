@@ -1,4 +1,4 @@
-import {IRootScopeService} from './index.run';
+import { IRootScopeService } from './index.run';
 
 /** @ngInject */
 export function monarchApp(): angular.IDirective {
@@ -41,10 +41,10 @@ export class MonarchAppController {
                 // this.$log.log($state.current)
             }
 
-            // var isMetaMaskEnabled = this.$rootScope.App.UserService.isMetaMaskInstalled();
+            // var isMetaMaskEnabled = this.$rootScope.App.isMetaMaskInstalled;
 
             // if (isMetaMaskEnabled) {
-            //    // no-op
+            //     // no-op
             // } else {
             //     $timeout(() => {
             //         $state.go('metamask')

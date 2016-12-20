@@ -78,6 +78,12 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('other', function () {
+
+
+  gulp.src("src/assets/*")
+    .pipe(gulp.dest('dist/assets'));
+
+  
   var fileFilter = $.filter(function (file) {
     return file.stat.isFile();
   });

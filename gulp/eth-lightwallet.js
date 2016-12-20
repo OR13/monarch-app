@@ -13,9 +13,17 @@ function installEthLightWallet() {
   gulp.src("node_modules/async/dist/*")
     .pipe(gulp.dest('src/assets/async'));
 
+  gulp.src("node_modules/async/dist/*")
+    .pipe(gulp.dest('dist/assets/async'));
 
   gulp.src("node_modules/hooked-web3-provider/build/*")
     .pipe(gulp.dest('src/assets/hooked-web3-provider'));
+
+  gulp.src("node_modules/hooked-web3-provider/build/*")
+    .pipe(gulp.dest('dist/assets/hooked-web3-provider'));
+
+  gulp.src("node_modules/eth-lightwallet/dist/*")
+    .pipe(gulp.dest('dist/assets/eth-lightwallet'));
 
   return gulp.src("node_modules/eth-lightwallet/dist/*")
     .pipe(gulp.dest('src/assets/eth-lightwallet'));
